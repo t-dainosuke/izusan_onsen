@@ -1,0 +1,41 @@
+{
+    "liveSassCompile.settings.formats": [
+       //Sassの出力内容の設定
+      {
+        "format": "expanded", //nested、compact、compressedのどれかを選ぶ
+        "extensionName": ".css", //style.cssとして出力
+        "savePath": "~/css" //cssフォルダの中にstyle.cssを出力
+      },
+      {
+        "format": "compressed",
+        "extensionName": ".min.css",
+        "savePath": "~/css"
+      },
+
+      {
+        "format": "expanded", //nested、compact、compressedのどれかを選ぶ
+        "extensionName": ".css", //style.cssとして出力
+        "savePath": "~/css" //cssフォルダの中にstyle.cssを出力
+      },
+      {
+        "format": "compressed",
+        "extensionName": ".min.css",
+        "savePath": "~/css"
+      }
+    ],
+    "liveSassCompile.settings.includeItems": [
+      "/assets/scss/style.scss"
+    ],
+    "liveSassCompile.settings.excludeList": [ //対象外とするフォルダを指定
+      "/**/node_modules/**",
+      "/.vscode/**",
+      "/.history/**"
+    ],
+    "liveSassCompile.settings.autoprefix": [
+      "last 2 versions",
+      "ie >= 11",
+      "Android >= 4",
+      "ios_saf >= 8"
+    ],
+    "liveSassCompile.settings.generateMap": false,
+}
