@@ -1,0 +1,63 @@
+header {
+  position: fixed;
+  width: 100vw;
+  background-color: #fff;
+
+  .header-logo {
+    margin-right: 10px;
+  }
+}
+
+.nav-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 40px;
+
+  nav {
+    >ul {
+      display: flex;
+      justify-content: flex-end;
+
+      li {
+        a {
+          padding: 14px 12px;
+        }
+
+        ul {
+          display: none;
+        }
+      }
+
+      .submenu {
+        >a {
+          display: flex;
+          align-items: center;
+        }
+
+        a::after {
+          content: "";
+          display: inline-block;
+          width: 10px;
+          height: 5px;
+          background-image: url(../img/common/gnav-arrow.svg);
+          background-size: contain;
+          background-position: center;
+          background-repeat: no-repeat;
+          margin-left: 8px;
+          padding: 10px 7px;
+        }
+      }
+    }
+  }
+}
+
+.sns-wrapper {
+  position: fixed;
+  right: 0;
+  top: 145px;
+
+  >div+div {
+    margin-top: 8px;
+  }
+}

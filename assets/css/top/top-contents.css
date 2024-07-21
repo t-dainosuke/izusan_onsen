@@ -1,0 +1,24 @@
+.news-wrapper {
+  position: relative;
+  z-index: 1;
+
+
+
+  h2 {
+    display: inline-block;
+    font-size: 3.2rem;
+    line-height: calc(47.33 / 32);
+    font-weight: 500;
+    padding: 8px 24px;
+    border: 1px solid #111;
+    border-radius: 10px 10px 0 0;
+  }
+
+  .topnews-left {}
+}
+
+.news-wrapper::after {
+  background-color: #CCC400;
+  position: absolute;
+
+}

@@ -1,0 +1,20 @@
+.top-section,
+.full-width-wrapper {
+  margin: 0 calc(50% - 50vw);
+  padding: 0 calc(50vw - 50%);
+}
+
+.large-width-wrapper,
+.medium-width-wrapper {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.large-width-wrapper {
+  max-width: calc(1200px + (20px * 2));
+}
+
+.medium-width-wrapper {
+  max-width: calc(960px + (20px * 2));
+}

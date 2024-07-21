@@ -1,0 +1,15 @@
+@font-face {
+  font-family: "Sawarabi Mincho";
+  src:
+
+    url("../fonts/SawarabiMincho-Regular.woff") format("woff"),
+    url("../fonts/SawarabiMincho-Regular.ttf") format("truetype");
+}
+
+body {
+  color: #111;
+  font-family: "Sawarabi Mincho";
+  font-size: 1.6rem;
+  line-height: calc(23.66 / 16);
+  font-weight: 400;
+}
