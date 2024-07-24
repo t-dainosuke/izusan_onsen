@@ -15,7 +15,11 @@
   span {
     display: inline-block;
     padding: 8px 32px;
-    border: 1px solid #111;
+    border: 1px solid var(--color-black);
     border-radius: 10px;
+
+    +span {
+      margin: -1px 0;
+    }
   }
 }

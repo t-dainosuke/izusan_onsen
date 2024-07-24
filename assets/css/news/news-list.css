@@ -1,0 +1,76 @@
+.news-list {
+  width: 100%;
+  border: 1px solid var(--color-black);
+  border-radius: 0 10px 10px 10px;
+  padding: 17.5px 32px 32px;
+
+  .news-item {
+    a {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      padding: 17.5px 0;
+      border-bottom: 1px solid var(--color-black);
+
+      >* {
+        display: flex;
+        align-items: center;
+        min-height: 24px;
+      }
+    }
+
+    time {
+      font-family: "Roboto";
+      font-size: 1.2rem;
+      line-height: calc(14.06 / 12);
+      letter-spacing: .02em;
+    }
+
+    .news-category {
+      display: inline-block;
+      width: 100%;
+      max-width: 101px;
+      font-family: "Roboto";
+      font-size: 1.1rem;
+      line-height: calc(12.89 / 11);
+      letter-spacing: .02em;
+      background-color: #fff;
+      border: 1px solid var(--color-black);
+      border-radius: 100vw;
+      margin-left: 16px;
+      padding: 5px 12px 3px;
+      text-align: center;
+    }
+
+    /* お知らせ */
+    .news-category.cat-1 {}
+
+    /* イベント */
+    .news-category.cat-2 {}
+
+    /* キャンペーン */
+    .news-category.cat-3 {}
+
+    .news-text {
+      display: flex;
+      flex-wrap: wrap;
+      align-content: center;
+      font-size: 1.4rem;
+      line-height: calc(20.71 / 14);
+      letter-spacing: .02em;
+      margin-left: 16px;
+
+      &::after {
+        content: "";
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+        background-image: url('data:image/svg+xml;charset=utf8,%3Csvg%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Cpath%20d%3D%22M11.3%2019.3C11.1167%2019.1167%2011.0207%2018.8834%2011.012%2018.6C11.004%2018.3167%2011.0917%2018.0834%2011.275%2017.9L16.175%2013H5C4.71667%2013%204.479%2012.904%204.287%2012.712C4.09567%2012.5207%204%2012.2834%204%2012C4%2011.7167%204.09567%2011.479%204.287%2011.287C4.479%2011.0957%204.71667%2011%205%2011H16.175L11.275%206.10005C11.0917%205.91672%2011.004%205.68338%2011.012%205.40005C11.0207%205.11672%2011.1167%204.88338%2011.3%204.70005C11.4833%204.51672%2011.7167%204.42505%2012%204.42505C12.2833%204.42505%2012.5167%204.51672%2012.7%204.70005L19.3%2011.3C19.4%2011.3834%2019.471%2011.4874%2019.513%2011.612C19.5543%2011.7374%2019.575%2011.8667%2019.575%2012C19.575%2012.1334%2019.5543%2012.2584%2019.513%2012.375C19.471%2012.4917%2019.4%2012.6%2019.3%2012.7L12.7%2019.3C12.5167%2019.4834%2012.2833%2019.575%2012%2019.575C11.7167%2019.575%2011.4833%2019.4834%2011.3%2019.3Z%22%20fill%3D%22%23111111%22%2F%3E%0A%3C%2Fsvg%3E%0A');
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+        margin-left: 16px;
+      }
+    }
+  }
+}
