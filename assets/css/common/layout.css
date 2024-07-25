@@ -29,6 +29,14 @@
   background-image: var(--bg-wave-orange);
 }
 
+.top-section.bg-blue::before {
+  background-image: var(--bg-wave-blue);
+}
+
+.top-section.bg-skyblue::before {
+  background-image: var(--bg-wave-skyblue);
+}
+
 .large-width-wrapper,
 .medium-width-wrapper {
   width: 100%;

@@ -29,6 +29,10 @@
   background-color: var(--color-orange);
 }
 
+.bg-blue {
+  background-color: var(--color-blue);
+}
+
 .bg-skyblue {
   background-color: var(--color-skyblue);
 }

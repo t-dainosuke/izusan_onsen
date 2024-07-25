@@ -33,5 +33,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Sawarabi+Mincho&display=swap" rel="stylesheet">
     <script src="./assets/js/jquery-3.7.1.min.js"></script>
 
-      `);
+  `);
+
+  document.footer.insertAdjacentHTML('afterbegin', `
+
+  `);
 }

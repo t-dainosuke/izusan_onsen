@@ -1,56 +1,65 @@
-header {
+.nav-header-wrapper {
+  width: 100%;
   position: fixed;
-  width: 100vw;
-  background-color: #fff;
+  top: 0;
+  left: 0;
+  background-color: var(--color-white);
+  z-index: 10;
 
-  .header-logo {
-    margin-right: 10px;
-  }
-}
+  .nav-header {
+    max-width: 1200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    padding: 16px 0;
 
-.nav-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 16px 40px;
+    .header-logo {
+      margin-right: 10px;
+    }
 
-  nav {
-    >ul {
-      display: flex;
-      justify-content: flex-end;
+    nav {
+      >ul {
+        display: flex;
+        justify-content: flex-end;
 
-      li {
-        a {
-          padding: 14px 12px;
+        li {
+          a {
+            padding: 14px 12px;
+          }
+
+          ul {
+            display: none;
+          }
         }
 
-        ul {
-          display: none;
-        }
-      }
+        .submenu {
+          >a {
+            display: flex;
+            align-items: center;
+          }
 
-      .submenu {
-        >a {
-          display: flex;
-          align-items: center;
-        }
-
-        a::after {
-          content: "";
-          display: inline-block;
-          width: 10px;
-          height: 5px;
-          background-image: url(../img/common/gnav-arrow.svg);
-          background-size: contain;
-          background-position: center;
-          background-repeat: no-repeat;
-          margin-left: 8px;
-          padding: 10px 7px;
+          a::after {
+            content: "";
+            display: inline-block;
+            width: 10px;
+            height: 5px;
+            background-image: url(../../img/common/gnav-arrow.svg);
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            margin-left: 8px;
+            padding: 10px 7px;
+          }
         }
       }
     }
   }
+
+
 }
+
+
 
 .sns-wrapper {
   position: fixed;
