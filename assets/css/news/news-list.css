@@ -1,16 +1,17 @@
 .news-list {
-  width: 100%;
-  border: 1px solid var(--color-black);
-  border-radius: 0 10px 10px 10px;
-  padding: 17.5px 32px 32px;
-
   .news-item {
-    a {
+    +.news-item {
+      & a {
+        border-top: 1px solid var(--color-black);
+      }
+    }
+
+    & a {
       display: flex;
       align-items: center;
       flex-wrap: wrap;
-      padding: 17.5px 0;
-      border-bottom: 1px solid var(--color-black);
+      padding: 16px 0;
+
 
       >* {
         display: flex;
@@ -19,45 +20,44 @@
       }
     }
 
-    time {
+    & time {
       font-family: "Roboto";
-      font-size: 1.2rem;
-      line-height: calc(14.06 / 12);
-      letter-spacing: .02em;
+      font-size: 1.4rem;
+      line-height: calc(16.41 / 14);
     }
 
     .news-category {
       display: inline-block;
       width: 100%;
-      max-width: 101px;
-      font-family: "Roboto";
-      font-size: 1.1rem;
-      line-height: calc(12.89 / 11);
-      letter-spacing: .02em;
-      background-color: #fff;
-      border: 1px solid var(--color-black);
+      max-width: 122px;
+      font-size: 1.4rem;
+      line-height: calc(20.27 / 14);
+      color: var(--color-white);
       border-radius: 100vw;
       margin-left: 16px;
-      padding: 5px 12px 3px;
+      padding: 4px 9px;
       text-align: center;
     }
 
     /* お知らせ */
-    .news-category.cat-1 {}
+    .news-category.cat-1 {
+      background-color: var(--color-news-blue);
+    }
 
     /* イベント */
-    .news-category.cat-2 {}
+    .news-category.cat-2 {
+      background-color: var(--color-news-orange);
+    }
 
     /* キャンペーン */
-    .news-category.cat-3 {}
+    .news-category.cat-3 {
+      background-color: var(--color-news-red);
+    }
 
     .news-text {
       display: flex;
       flex-wrap: wrap;
       align-content: center;
-      font-size: 1.4rem;
-      line-height: calc(20.71 / 14);
-      letter-spacing: .02em;
       margin-left: 16px;
 
       &::after {

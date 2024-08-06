@@ -3,7 +3,8 @@
 
 <head prefix="og: https://ogp.me/ns# website: https://ogp.me/ns/website#">
   <meta charset="UTF-8">
-  <script src="./assets/js/include.js"></script>
+  <script src="/assets/js/include.js"></script>
+
   <meta property="og:type" content="website">
   <title>伊豆山温泉観光協会・伊豆山温泉旅館組合</title>
   <meta property="og:title" content="伊豆山温泉観光協会・伊豆山温泉旅館組合">
@@ -13,52 +14,54 @@
 
   <link rel="canonical" href="https://www.izusan.com/">
   <meta property="og:url" content="https://www.izusan.com/">
-  <link rel="stylesheet" href="./assets/css/style.css">
-
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <script src="/assets/js/jquery-3.7.1.min.js"></script>
+  <script src="/assets/js/slick.min.js"></script>
+  <script src="/assets/js/script.js"></script>
 </head>
 
 <body>
   <header class="nav-header-wrapper">
-    <div class="nav-header">
-      <div class="header-logo">
-        <a href="/">
-          <img src="assets/img/common/logo.svg" alt="熱海伊豆山温泉 Atami Izusan Onsen" width="240" height="53">
+    <div class="nav-header large-width-wrapper">
+
+      <h1 class="header-logo">
+        <a href="/" class="logo-link">
+          <img src="/assets/img/common/logo.svg" alt="熱海伊豆山温泉 Atami Izusan Onsen" width="240" height="53">
         </a>
-      </div>
-      <nav>
-        <ul>
-          <li class="submenu"><a href="#">観光案内</a>
+      </h1>
+
+      <nav id="hb-menu" class="nav-menu">
+        <ul class="menu-list">
+          <li class="menu-item submenu"><a href="#">観光案内</a>
             <ul>
-              <li><a href=""></a></li>
-              <li><a href=""></a></li>
-              <li><a href=""></a></li>
-              <li><a href=""></a></li>
+              <li><a href="#">観光案内1</a></li>
+              <li><a href="#">観光案内2</a></li>
+              <li><a href="#">観光案内3</a></li>
+              <li><a href="#">観光案内4</a></li>
             </ul>
           </li>
-          <li><a href="#">伊豆山の温泉について</a></li>
-          <li><a href="#">交通アクセス</a></li>
-          <li class="submenu"><a href="#">伊豆山を知る</a>
+          <li class="menu-item"><a href="#">伊豆山の温泉について</a></li>
+          <li class="menu-item"><a href="#">交通アクセス</a></li>
+          <li class="menu-item submenu"><a href="#">伊豆山を知る</a>
             <ul>
-              <li><a href=""></a></li>
-              <li><a href=""></a></li>
-              <li><a href=""></a></li>
-              <li><a href=""></a></li>
+              <li><a href="#">伊豆山を知る1</a></li>
+              <li><a href="#">伊豆山を知る2</a></li>
+              <li><a href="#">伊豆山を知る3</a></li>
+              <li><a href="#">伊豆山を知る4</a></li>
             </ul>
           </li>
         </ul>
       </nav>
-    </div>
-    <div class="sns-wrapper">
-      <div>
-        <a href="https://www.instagram.com/izusan.onsen123/?hl=ja" target="_blank">
-          <img src="assets/img/common/icon-floatinsta.svg" alt="熱海伊豆山温泉観光協会公式Instagram" width="48" height="48">
-        </a>
-      </div>
-      <div>
-        <a href="https://x.com/atamiizusanspa" target="_blank">
-          <img src="assets/img/common/icon-floatx.svg" alt="熱海伊豆山温泉観光協会公式X(Twitter)" width="48" height="48">
-        </a>
-      </div>
+
+      <!-- ハンバーガーメニュー ボタン -->
+      <button id="openbtn" class="hamburger-button">
+        <div class="hamburger-lines">
+          <span class="line"></span>
+          <span class="line"></span>
+        </div>
+      </button>
+      <!-- ハンバーガーメニュー ボタン ここまで -->
+
     </div>
   </header>
   <section>
@@ -81,10 +84,10 @@
     </div>
   </section>
   <section class="top-section bg-yellow">
-    <div class="news-wrapper large-width-wrapper">
+    <div class="top-border-wrapper large-width-wrapper">
       <h2>ニュース</h2>
       <div class="fb">
-        <div class="top-news-left news-list">
+        <div class="top-border-left news-list">
           <div class="news-item">
             <a href="#">
               <time datetime="2024-04-05">2024.04.05</time>
@@ -107,7 +110,7 @@
             </a>
           </div>
         </div>
-        <div class="topnews-right">
+        <div class="top-border-right">
           <a href="https://www.jalan.net/jalan/doc/news/button/1292051701/" target="_blank">
             <img src="assets/img/top/news-banner01.png" alt="熱海伊豆山温泉 元気に頑張っています！" width="320" height="210">
           </a>
@@ -115,42 +118,214 @@
       </div>
     </div>
   </section>
-  <section class="top-section bg-orange">
+  <section class="top-about top-section bg-orange">
     <div class="medium-width-wrapper">
-      <div class="top-about fb">
-        <div class="top-about-left">
+      <div class="top-about top-border-wrapper fb">
+        <div class="">
           <h2>伊豆山温泉について</h2>
-          <p>熱海伊豆山温泉には、114本の源泉があり、伊豆山温泉組合の手によって管理されています。<br>
-            毎年1月には、保健所係員、伊豆山温泉組合職員立会いの下、源泉の湯量・温度などを確認する温泉実態調査を行っています。</p>
+          <div class="top-border-left">
+            <p>熱海伊豆山温泉には、114本の源泉があり、伊豆山温泉組合の手によって管理されています。<br>
+              毎年1月には、保健所係員、伊豆山温泉組合職員立会いの下、源泉の湯量・温度などを確認する温泉実態調査を行っています。</p>
+          </div>
+          <div class="top-border-link">
+            <a href="#">詳しくはこちら</a>
+          </div>
         </div>
-        <div class="top-about-right">
+        <div class="top-border-right">
 
 
         </div>
       </div>
     </div>
   </section>
-  <section class="top-section bg-blue">
+  <section class="top-sightseeing01 top-section bg-skyblue">
     <div class="medium-width-wrapper fb">
-      <h2>観光案内</h2>
-      <p>熱海伊豆山温泉には、観光の名所が多くあります。中でもおすすめスポットこちらでご紹介いたします。</p>
+      <div class="top-border-left">
+        <h2>観光案内</h2>
+        <p>熱海伊豆山温泉には、観光の名所が多くあります。<br>中でもおすすめスポットこちらでご紹介いたします。</p>
+      </div>
+      <div class="top-border-right">
+        <img src="assets/img/top/illu-onsen.png" alt="" width="230" height="180">
+      </div>
     </div>
-    <div class="large-width-wrapper">
-
+    <div class="top-sightseeing-items top-border-wrapper large-width-wrapper fb">
+      <div class="sight-seeing-item item-activity">
+        <h2>体験</h2>
+        <div class="top-border-left">
+          <p>船釣りと刺し網、期間限定で開催される抽選会、お宿での写経など、さまざまなアクティビティを体験できます。</p>
+          <div class="top-border-left-img">
+            <img src="/assets/img/top/sightseeing-img01.png" alt="">
+          </div>
+        </div>
+        <div class="top-border-link">
+          <a href="#">詳しくはこちら</a>
+        </div>
+      </div>
+      <div class="sight-seeing-item item-event">
+        <h2>イベント</h2>
+        <div class="top-border-left">
+          <p>1年を通じて様々なイベントが開催されます。季節ごとの風物詩や特別な催し物を楽しめるイベントスケジュールをぜひご確認ください。</p>
+          <div class="top-border-left-img">
+            <img src="/assets/img/top/sightseeing-img02.png" alt="">
+          </div>
+        </div>
+        <div class="top-border-link">
+          <a href="#">詳しくはこちら</a>
+        </div>
+      </div>
+      <div class="sight-seeing-item item-shop">
+        <h2>伊豆山のお店</h2>
+        <div class="top-border-left">
+          <p>地元の味覚を楽しめる飲食店や、特産品を取り揃えたお土産店など、魅力的なお店が多数あります。温泉街を散策しながら、お気に入りの一軒を見つけてください。</p>
+          <div class="top-border-left-img">
+            <img src="/assets/img/top/sightseeing-img03.png" alt="">
+          </div>
+        </div>
+        <div class="top-border-link">
+          <a href="#">詳しくはこちら</a>
+        </div>
+      </div>
+      <div class="sight-seeing-item item-activity">
+        <h2>体験</h2>
+        <div class="top-border-left">
+          <p>船釣りと刺し網、期間限定で開催される抽選会、お宿での写経など、さまざまなアクティビティを体験できます。</p>
+          <div class="top-border-left-img">
+            <img src="/assets/img/top/sightseeing-img01.png" alt="">
+          </div>
+        </div>
+        <div class="top-border-link">
+          <a href="#">詳しくはこちら</a>
+        </div>
+      </div>
+      <div class="sight-seeing-item item-event">
+        <h2>イベント</h2>
+        <div class="top-border-left">
+          <p>1年を通じて様々なイベントが開催されます。季節ごとの風物詩や特別な催し物を楽しめるイベントスケジュールをぜひご確認ください。</p>
+          <div class="top-border-left-img">
+            <img src="/assets/img/top/sightseeing-img02.png" alt="">
+          </div>
+        </div>
+        <div class="top-border-link">
+          <a href="#">詳しくはこちら</a>
+        </div>
+      </div>
+      <div class="sight-seeing-item item-shop">
+        <h2>伊豆山のお店</h2>
+        <div class="top-border-left">
+          <p>地元の味覚を楽しめる飲食店や、特産品を取り揃えたお土産店など、魅力的なお店が多数あります。温泉街を散策しながら、お気に入りの一軒を見つけてください。</p>
+          <div class="top-border-left-img">
+            <img src="/assets/img/top/sightseeing-img03.png" alt="">
+          </div>
+        </div>
+        <div class="top-border-link">
+          <a href="#">詳しくはこちら</a>
+        </div>
+      </div>
     </div>
   </section>
-  <section class="top-section bg-yellow">
-    <div class="medium-width-wrapper">
+  <section class="top-sightseeing02 top-section bg-yellow">
+    <div class="sight-seeing-item02-items top-border-wrapper medium-width-wrapper">
+      <div class="sight-seeing-item02-item">
+        <div class="top-border-left">
+          <h2>宿泊施設</h2>
+          <div class="top-border-left-img">
+            <img src="/assets/img/top/sightseeing02-img01.png" alt="" width="108" height="105">
+          </div>
+          <p>熱海伊豆山温泉で宿泊できる一押しの宿泊施設をご紹介します。</p>
+          <div class="top-border-link">
+            <a href="#">詳しくはこちら</a>
+          </div>
+        </div>
+        <div class="top-border-right">
+          <img src="/assets/img/top/sightseeing02-img01.jpg" alt="">
+        </div>
+      </div>
+      <div class="sight-seeing-item02-item">
+        <div class="top-border-left">
+          <h2>伊豆山の歴史</h2>
+          <div class="top-border-left-img">
+            <img src="/assets/img/top/sightseeing02-img02.png" alt="" width="174" height="107">
+          </div>
+          <p>古くから伝わる伊豆山の歴史を<br>ご紹介します。</p>
+          <div class="top-border-link">
+            <a href="#">詳しくはこちら</a>
+          </div>
+        </div>
+        <div class="top-border-right">
+          <img src="/assets/img/top/sightseeing02-img02.jpg" alt="">
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="top-gallery top-section bg-white">
+    <div class="medium-width-wrapper fb">
+      <h2>伊豆山写真館</h2>
+      <div class="more-view">
+        <a href="#">もっとみる</a>
+      </div>
+    </div>
+    <div class="full-width-wrapper">
+      <div class="top-gallery-slider slider">
+        <div>
+          <div class="top-gallery-slider-inner"><img src="\assets\img\top\gallery\gallery01.jpg"></div>
+        </div>
+        <div>
+          <div class="top-gallery-slider-inner"><img src="\assets\img\top\gallery\gallery02.jpg"></div>
+        </div>
+        <div>
+          <div class="top-gallery-slider-inner"><img src="\assets\img\top\gallery\gallery03.jpg"></div>
+        </div>
+        <div>
+          <div class="top-gallery-slider-inner"><img src="\assets\img\top\gallery\gallery04.jpg"></div>
+        </div>
+        <div>
+          <div class="top-gallery-slider-inner"><img src="\assets\img\top\gallery\gallery05.jpg"></div>
+        </div>
+      </div>
+      <div class="top-gallery-slider slider">
+        <div>
+          <div class="top-gallery-slider-inner"><img src="\assets\img\top\gallery\gallery03.jpg"></div>
+        </div>
+        <div>
+          <div class="top-gallery-slider-inner"><img src="\assets\img\top\gallery\gallery04.jpg"></div>
+        </div>
+        <div>
+          <div class="top-gallery-slider-inner"><img src="\assets\img\top\gallery\gallery05.jpg"></div>
+        </div>
+        <div>
+          <div class="top-gallery-slider-inner"><img src="\assets\img\top\gallery\gallery01.jpg"></div>
+        </div>
+        <div>
+          <div class="top-gallery-slider-inner"><img src="\assets\img\top\gallery\gallery02.jpg"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="top-access top-section bg-white">
+    <div class="large-width-wrapper">
+      <div class="top-access-inner">
 
+      </div>
     </div>
   </section>
   <section class="top-section bg-skyblue">
   </section>
-  <footer class=" bg-blue">
-    <div class="medium-width-wrapper">
-
+  <footer class="bg-skyblue">
+    <div class="top-border-wrapper medium-width-wrapper fb">
+      <div class="footer-left">
+        <img src="/assets/img/common/logo.svg" alt="熱海伊豆山温泉 Atami Izusan Onsen" width="184" height="40.34">
+        <p>伊豆山温泉観光協会・伊豆山温泉旅館組合</p>
+        <p>〒413-0011<br>
+          熱海市田原本町9-1熱海第一ビル地下1階</p>
+        <p>TEL:0557-81-2631<br>
+          E-Mail:izusan@izusan.com</p>
+      </div>
+    </div>
+    <div class="copyright">
+      <small>©︎ 2024 Izusan Onsen Kanko Kyokai / Izusan Onsen Ryokan Kumiai</small>
     </div>
   </footer>
+
 </body>
 
 </html>

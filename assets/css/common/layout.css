@@ -21,6 +21,10 @@
   transform: translateY(-100%);
 }
 
+.top-section.bg-white::before {
+  background-image: var(--bg-wave-white);
+}
+
 .top-section.bg-yellow::before {
   background-image: var(--bg-wave-yellow);
 }
