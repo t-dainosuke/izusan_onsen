@@ -74,7 +74,7 @@
     transform: translateX(200%);
     overflow: auto;
     /* ナビメニューの背景色を変えたい時 */
-    background-color: rgba(0, 0, 0, .6);
+    background-color: var(--color-white);
   }
 
   @media (min-width: 1025px) {
@@ -85,14 +85,19 @@
 .menu-list {
   display: flex;
   justify-content: flex-end;
+
+  @media (max-width: 1024px) {
+    flex-direction: column;
+  }
 }
 
 @media (max-width: 1024px) {
   .menu-item {
     /* 各ナビメニューの下線を変えたい時 */
     border-style: solid;
-    border-color: #fff;
+    border-color: var(--border-color-black);
     border-bottom-width: 1px;
+    color: var(--color-black);
   }
 }
 
@@ -103,16 +108,18 @@ nav {
   & a {
     padding: 14px 16px;
     font-weight: 700;
+    letter-spacing: 0;
   }
 
   &.active {
     a {
-      color: #fff;
+      color: var(--color-black);
     }
   }
 
   .submenu {
     position: relative;
+
     >a {
       display: flex;
       align-items: center;
@@ -138,6 +145,7 @@ nav {
       top: 0;
       left: 0;
       background-color: #fff;
+      z-index: 10;
 
       & li {}
     }
@@ -181,7 +189,7 @@ nav {
 
       .line {
         /* ハンバーガーメニューオープン時の線の色を変えたい時 */
-        background-color: #fff;
+        background-color: var(--border-color-black);
       }
     }
 

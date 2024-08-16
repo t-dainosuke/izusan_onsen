@@ -7,10 +7,14 @@
 .top-section {
   margin: 56px calc(50% - 50vw) -56px;
   padding: 0 calc(50vw - 50%) 56px;
+  background-size: 250px;
+}
+
+*[class^="bg-"] {
   position: relative;
 }
 
-.top-section::before {
+*[class^="bg-"]::before {
   content: "";
   display: inline-block;
   width: 100%;
@@ -19,26 +23,9 @@
   top: 0;
   left: 0;
   transform: translateY(-100%);
-}
-
-.top-section.bg-white::before {
-  background-image: var(--bg-wave-white);
-}
-
-.top-section.bg-yellow::before {
-  background-image: var(--bg-wave-yellow);
-}
-
-.top-section.bg-orange::before {
-  background-image: var(--bg-wave-orange);
-}
-
-.top-section.bg-blue::before {
-  background-image: var(--bg-wave-blue);
-}
-
-.top-section.bg-skyblue::before {
-  background-image: var(--bg-wave-skyblue);
+  background-size: contain;
+  background-position: bottom center;
+  background-repeat: repeat-x;
 }
 
 .large-width-wrapper,

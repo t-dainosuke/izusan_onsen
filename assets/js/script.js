@@ -15,11 +15,11 @@ jQuery(function ($) {
   var submenuHeight = $(".submenu").outerHeight();
   $(".submenu > ul").css("top", submenuHeight + "px");
   $(".submenu").hover(function () {
-    $("> ul", this).slideDown("fast");
+    $("> ul", this).stop(true, true).slideDown("fast");
   },
-    function () {
-      $(">ul", this).slideUp("fast");
-    })
+  function () {
+    $("> ul", this).stop(true, true).slideUp("fast");
+  });
 
 
   // ハンバーガーメニューのクリック処理
@@ -59,6 +59,7 @@ jQuery(function ($) {
     arrows: false, //矢印非表示
     pauseOnFocus: false, //スライダーをフォーカスした時にスライドを停止させるか
     pauseOnHover: false, //スライダーにマウスホバーした時にスライドを停止させるか
+    variableWidth: true,
     responsive: [
       {
         breakpoint: 750,

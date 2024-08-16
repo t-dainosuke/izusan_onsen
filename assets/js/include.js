@@ -36,3 +36,36 @@
 
   `);
 }
+
+const fullUrl = window.location.href;
+const url = new URL(fullUrl);
+const directoryUrl = url.origin + url.pathname.replace(/\/[^\/]*$/, '/');
+const ogUrl = directoryUrl;
+const ogImageUrl = `${directoryUrl}assets/img/og-image.jpg`;
+
+// og:imageを作成または更新
+let ogImageMetaTag = document.querySelector('meta[property="og:image"]');
+if (!ogImageMetaTag) {
+  ogImageMetaTag = document.createElement('meta');
+  ogImageMetaTag.setAttribute('property', 'og:image');
+  document.head.appendChild(ogImageMetaTag);
+}
+ogImageMetaTag.setAttribute('content', ogImageUrl);
+
+// twitter:imageを作成または更新（修正：クオートの間違い）
+let twitterImageMetaTag = document.querySelector('meta[name="twitter:image"]');
+if (!twitterImageMetaTag) {
+  twitterImageMetaTag = document.createElement('meta');
+  twitterImageMetaTag.setAttribute('name', 'twitter:image');
+  document.head.appendChild(twitterImageMetaTag);
+}
+twitterImageMetaTag.setAttribute('content', ogImageUrl);
+
+// og:urlを作成または更新
+let ogUrlMetaTag = document.querySelector('meta[property="og:url"]');
+if (!ogUrlMetaTag) {
+  ogUrlMetaTag = document.createElement('meta');
+  ogUrlMetaTag.setAttribute('property', 'og:url');
+  document.head.appendChild(ogUrlMetaTag);
+}
+ogUrlMetaTag.setAttribute('content', ogUrl);

@@ -1,4 +1,7 @@
 .top-section {
+  padding-top: 80px;
+  padding-bottom: 80px;
+
   & h2 {
     display: inline-block;
     font-size: 2.8rem;
@@ -12,8 +15,6 @@
 .top-border-wrapper {
   position: relative;
   z-index: 1;
-  padding-top: 80px;
-  padding-bottom: 80px;
 
   & h2 {
     border: 1px solid var(--border-color-black);
@@ -48,6 +49,7 @@
       justify-content: center;
       align-items: center;
       padding: 16px 32px;
+      border-radius: inherit;
 
       &::after {
         content: "";
@@ -66,21 +68,63 @@ section[class*="bg-"] {
   background-blend-mode: multiply; */
 }
 
+.bg-white {
+  background-color: var(--color-white);
+}
+
+.bg-white::before {
+  background-image: var(--bg-wave-white);
+}
+
+/* 黄色 */
+.bg-yellow::before {
+  background-image: var(--bg-wave-yellow);
+}
 
 .bg-yellow {
   background: var(--color-yellow);
 }
 
+.bg-texture-yellow {
+  background-image: var(--bg-texture-yellow);
+}
+
+.top-section.bg-texture-yellow::before {
+  background-image: var(--bg-wave-texture-yellow);
+}
+
+/* オレンジ */
+.bg-orange::before {
+  background-image: var(--bg-wave-orange);
+}
+
 .bg-orange {
-  background-color: var(--color-orange);
+  background: var(--color-orange);
+}
+
+.bg-texture-orange {
+  background-image: var(--bg-texture-orange);
+}
+
+.bg-texture-orange::before {
+  background-image: var(--bg-wave-texture-orange);
+}
+
+/* 青色 */
+.bg-blue::before {
+  background-image: var(--bg-wave-blue);
 }
 
 .bg-blue {
-  background-color: var(--color-blue);
+  background: var(--color-blue);
 }
 
-.bg-skyblue {
-  background-color: var(--color-skyblue);
+.bg-texture-blue {
+  background-image: var(--bg-texture-blue);
+}
+
+.bg-texture-blue::before {
+  background-image: var(--bg-wave-texture-blue);
 }
 
 .news-list.top-border-left {
@@ -88,8 +132,27 @@ section[class*="bg-"] {
   padding: 14.5px 32px;
 }
 
+.top-about {
+  position: relative;
+}
+
+.top-about.icon-sun::after {
+  content: "";
+  display: inline-block;
+  width: 253px;
+  height: 166px;
+  background-image: var(--icon-sun);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: absolute;
+  bottom: 13px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+
 .top-sightseeing01 {
-  background-image: var(--illust-sightseeing);
 
   .top-border-left {
     width: 100%;
@@ -114,8 +177,8 @@ section[class*="bg-"] {
   .top-sightseeing-items {
     flex-wrap: wrap;
     position: relative;
-    right: -1px;
-    padding: 0px;
+    padding-top: 0;
+    padding-bottom: 0;
 
     .sight-seeing-item {
       width: calc(100% / 3);
@@ -297,6 +360,7 @@ section[class*="bg-"] {
       width: 60px;
       height: 60px;
       background-image: var(--icon-link);
+      margin-left: 16px;
     }
   }
 
@@ -332,19 +396,20 @@ section[class*="bg-"] {
 
   .top-access-inner {
     aspect-ratio: 1200 / 459;
-    background-image: url(/assets/img/top/bg-access01.jpg);
+    background-image: var(--bg-access01);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
     border-radius: 10px;
     position: relative;
+    padding: 94px 120px 97px;
 
     &::after {
       content: "";
       display: inline-block;
-      width: 170px;
-      height: 234px;
-      background-image: url(/assets/img/top/illu-access-img01.png);
+      width: calc(170px - 32px);
+      height: calc(234px - 32px);
+      background-image: var(--illust-sightseeing);
       background-size: contain;
       background-repeat: no-repeat;
       background-position: center;
@@ -352,16 +417,13 @@ section[class*="bg-"] {
       left: 0;
       bottom: 0;
     }
-  }
-}
 
-/* footer */
-.copyright {
-  text-align: center;
-  border-top: 1px solid var(--border-color-black);
+    & * {
+      background-color: #E9DF00;
+    }
 
-  $ small {
-    font-size: 1.3rem;
-    line-height: calc(26 / 13);
+    .top-border-left {
+      max-width: 400px;
+    }
   }
 }

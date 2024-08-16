@@ -3,6 +3,7 @@
 @import url("common/variables.css");
 @import url("common/layout.css");
 @import url("common/header.css");
+@import url("common/footer.css");
 
 /* TOP */
 @import url("top/mainvisual.css");
