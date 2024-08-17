@@ -63,9 +63,8 @@
   }
 }
 
-section[class*="bg-"] {
-  /* background-image: var(--bg-wave-texture);
-  background-blend-mode: multiply; */
+section[class*="bg-"]:not(.top-gallery)+section {
+  padding-bottom: calc(80px + 56px);
 }
 
 .bg-white {
@@ -336,6 +335,7 @@ section[class*="bg-"] {
 
 .top-gallery {
   overflow-x: hidden;
+  padding-bottom: 80px;
 
   .medium-width-wrapper {
     display: flex;
@@ -392,7 +392,7 @@ section[class*="bg-"] {
 }
 
 .top-access {
-  margin: 80px 0;
+  margin: 0;
 
   .top-access-inner {
     aspect-ratio: 1200 / 459;

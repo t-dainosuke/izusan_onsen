@@ -1,6 +1,10 @@
 .mainvisual-wrapper {
   position: relative;
+
   .main-visual-text {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     position: absolute;
     bottom: -86px;
     left: 50%;
@@ -33,7 +37,26 @@
       }
     }
 
+    .weather-info {
+      border: 1px solid var(--border-color-black);
+      border-radius: 10px;
 
+      .todays-weather {
+        font-size: 1.4rem;
+        line-height: calc(20.27 / 14);
+        text-align: center;
+        padding: 8px 10px;
+        border-bottom: 1px solid var(--border-color-black)
+      }
+
+      #weather-icon img {
+        width: fit-content;
+      }
+
+      .weather-info-wrapper {
+        padding: 8px 10px;
+      }
+    }
   }
 
   .mainvisual-inner {

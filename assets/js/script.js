@@ -1,3 +1,95 @@
+const fullUrl = window.location.href;
+const url = new URL(fullUrl);
+const directoryUrl = url.origin + url.pathname.replace(/\/[^\/]*$/, '/');
+const ogUrl = directoryUrl;
+const ogImageUrl = `${directoryUrl}assets/img/og-image.jpg`;
+
+// og:imageを作成または更新
+let ogImageMetaTag = document.querySelector('meta[property="og:image"]');
+if (!ogImageMetaTag) {
+  ogImageMetaTag = document.createElement('meta');
+  ogImageMetaTag.setAttribute('property', 'og:image');
+  document.head.appendChild(ogImageMetaTag);
+}
+ogImageMetaTag.setAttribute('content', ogImageUrl);
+
+// twitter:imageを作成または更新
+let twitterImageMetaTag = document.querySelector('meta[name="twitter:image"]');
+if (!twitterImageMetaTag) {
+  twitterImageMetaTag = document.createElement('meta');
+  twitterImageMetaTag.setAttribute('name', 'twitter:image');
+  document.head.appendChild(twitterImageMetaTag);
+}
+twitterImageMetaTag.setAttribute('content', ogImageUrl);
+
+// og:urlを作成または更新
+let ogUrlMetaTag = document.querySelector('meta[property="og:url"]');
+if (!ogUrlMetaTag) {
+  ogUrlMetaTag = document.createElement('meta');
+  ogUrlMetaTag.setAttribute('property', 'og:url');
+  document.head.appendChild(ogUrlMetaTag);
+}
+ogUrlMetaTag.setAttribute('content', ogUrl);
+
+// canonicalを作成または更新
+let canonicalMetaTag = document.querySelector('link[rel="canonical"]');
+if (!canonicalMetaTag) {
+  canonicalMetaTag = document.createElement('link');
+  canonicalMetaTag.setAttribute('rel', 'canonical');
+  document.head.appendChild(canonicalMetaTag);
+}
+canonicalMetaTag.setAttribute('href', ogUrl);
+
+// OpenWeatherMap
+const apiKey = '3c2ca98bfc502150b6e40b43d09ef673';
+const city = 'Atami';
+
+// OpenWeatherMap API の URL
+const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&lang=jp&units=metric`;
+
+// API からデータを取得する関数
+// 天気の英語の説明を日本語に変換するための辞書
+const translations = {
+  "clear sky": "晴れ",
+  "few clouds": "少し雲がある",
+  "scattered clouds": "ばらついた雲",
+  "broken clouds": "曇り",
+  "shower rain": "にわか雨",
+  "rain": "雨",
+  "thunderstorm": "雷雨",
+  "snow": "雪",
+  "mist": "霧"
+};
+
+// API からデータを取得する関数
+function getWeather() {
+  fetch(apiUrl)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+    .then(data => {
+      // 天気情報を HTML に表示
+      document.getElementById('city').textContent = data.name;
+      document.getElementById('temp').textContent = data.main.temp + ' ℃';
+
+      // 天気の説明を日本語に翻訳
+      const description = data.weather[0].description;
+      const translatedDescription = translations[description] || description;
+      document.getElementById('weather-description').textContent = translatedDescription;
+
+      // 天気アイコンの設定
+      const iconUrl = `http://openweathermap.org/img/wn/${data.weather[0].icon}.png`;
+      document.getElementById('weather-image').src = iconUrl;
+    })
+    .catch(error => console.error('Error fetching weather data:', error));
+}
+
+// ページが読み込まれたときに天気情報を取得
+window.onload = getWeather;
+
 jQuery(function ($) {
   // ヘッダーの高さを代入する処理
   function setHeaderHeights() {
@@ -16,11 +108,9 @@ jQuery(function ($) {
   $(".submenu > ul").css("top", submenuHeight + "px");
   $(".submenu").hover(function () {
     $("> ul", this).stop(true, true).slideDown("fast");
-  },
-  function () {
+  }, function () {
     $("> ul", this).stop(true, true).slideUp("fast");
   });
-
 
   // ハンバーガーメニューのクリック処理
   $('#openbtn').on('click', function () {
@@ -87,3 +177,4 @@ jQuery(function ($) {
     ]
   });
 });
+

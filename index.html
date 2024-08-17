@@ -12,7 +12,6 @@
   <meta name="description" content="熱海伊豆山温泉の観光情報をお届けします。">
   <meta property="og:description" content="熱海伊豆山温泉の観光情報をお届けします。">
 
-  <link rel="canonical" href="https://www.izusan.com/">
   <link rel="stylesheet" href="/assets/css/style.css">
   <script src="/assets/js/jquery-3.7.1.min.js"></script>
   <script src="/assets/js/slick.min.js"></script>
@@ -132,6 +131,17 @@
             <span>ありがとうございます！</span>
             <span>気を付けて帰省してくださいね。</span>
         </h1>
+        <div class="weather-info">
+          <p class="todays-weather">今日の天気</p>
+          <div class="weather-info-wrapper">
+            <p id="location">ロケーション: <span id="city">熱海</span></p>
+            <p id="temperature">気温: <span id="temp">--</span></p>
+            <p id="description">天気: <span id="weather-description">--</span></p>
+            <div id="weather-icon">
+              <img id="weather-image" src="" alt="Weather Icon">
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -383,7 +393,7 @@
       </div>
     </div>
   </section>
-  <section class="top-access top-section bg-white">
+  <section class="top-access top-section">
     <div class="large-width-wrapper">
       <div class="top-access-inner top-border-wrapper">
         <h2>交通・アクセス</h2>
