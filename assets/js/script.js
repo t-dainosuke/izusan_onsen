@@ -87,12 +87,33 @@ jQuery(function ($) {
       }, 300); // 300ミリ秒後に実行
     }
   });
+  var clonedElements = $('#mainvisual-slider > *').clone(); // 要素をクローン
+  $('#mainvisual-slider').append(clonedElements); // クローンした要素を親コンテナに追加
 
   /* slick option */
+
+  // スライダーのクローンを生成する関数
+  function cloneSlides(selector) {
+    const $slider = $(selector);
+    const $slides = $slider.find('> *');
+
+    // クローンを生成
+    $slides.each(function () {
+      const $clone = $(this).clone();
+      $slider.append($clone);
+    });
+  }
+
+  // クローンを生成する
+  cloneSlides('.mainvisual .slider');
+  cloneSlides('.top-gallery-slider.slider');
+
   $('.mainvisual .slider').slick({
     autoplay: true, //自動でスクロール
+    infinite: true,
+    swipe: true,
     autoplaySpeed: 0, //自動再生のスライド切り替えまでの時間を設定
-    speed: 12000, //スライドが流れる速度を設定
+    speed: 15000, //スライドが流れる速度を設定
     cssEase: "linear", //スライドの流れ方を等速に設定
     swipe: false, // 操作による切り替えはさせない
     arrows: false, //矢印非表示
@@ -108,13 +129,17 @@ jQuery(function ($) {
       }
     ]
   });
+
   $('.top-gallery-slider.slider').slick({
     autoplay: true, //自動でスクロール
+    infinite: true,
     autoplaySpeed: 0, //自動再生のスライド切り替えまでの時間を設定
-    speed: 5000, //スライドが流れる速度を設定
+    speed: 15000, //スライドが流れる速度を設定
     cssEase: "linear", //スライドの流れ方を等速に設定
     swipe: false, // 操作による切り替えはさせない
     arrows: false, //矢印非表示
+    pauseOnFocus: false, //スライダーをフォーカスした時にスライドを停止させるか
+    pauseOnHover: false, //スライダーにマウスホバーした時にスライドを停止させるか
     variableWidth: true,
     responsive: [
       {
@@ -133,30 +158,30 @@ jQuery(function ($) {
 
   // 天気の英語の説明を日本語に変換するための辞書
   const translations = {
-    "clear sky": "晴れ",
-    "few clouds": "曇り時々晴れ",
-    "scattered clouds": "曇り",
-    "broken clouds": "曇り",
-    "overcast clouds": "曇り",
-    "shower rain": "にわか雨",
-    "rain": "雨",
-    "thunderstorm": "雷雨",
-    "snow": "雪",
-    "mist": "霧",
-    "drizzle": "細かい雨",
-    "heavy intensity rain": "強い雨",
-    "light rain": "小雨",
-    "moderate rain": "中程度の雨",
-    "heavy snow": "大雪",
-    "light snow": "小雪",
-    "sleet": "みぞれ",
-    "haze": "もや",
-    "fog": "霧",
-    "sand": "砂嵐",
-    "dust": "ほこり",
-    "volcanic ash": "火山灰",
-    "squall": "突風",
-    "tornado": "竜巻"
+    "clear sky": "晴れ", // 01d (昼), 01n (夜)
+    "few clouds": "曇り時々晴れ", // 02d (昼), 02n (夜)
+    "scattered clouds": "曇り", // 03d (昼), 03n (夜)
+    "broken clouds": "曇り", // 04d (昼), 04n (夜)
+    "overcast clouds": "曇り", // 04d (昼), 04n (夜)
+    "shower rain": "にわか雨", // 09d (昼), 09n (夜)
+    "rain": "雨", // 10d (昼), 10n (夜)
+    "thunderstorm": "雷雨", // 11d (昼), 11n (夜)
+    "snow": "雪", // 13d (昼), 13n (夜)
+    "mist": "霧", // 50d (昼), 50n (夜)
+    "drizzle": "霧雨", // 09d
+    "heavy intensity rain": "強い雨", // 10d
+    "light rain": "小雨", // 10d
+    "moderate rain": "やや強いの雨", // 10d
+    "heavy snow": "大雪", // 13d
+    "light snow": "小雪", // 13d
+    "sleet": "みぞれ", // 13d
+    "haze": "もや", // 50d
+    "fog": "霧", // 50d
+    "sand": "砂嵐", // 50d
+    "dust": "ほこり", // 50d
+    "volcanic ash": "火山灰", // 50d
+    "squall": "突風", // 50d
+    "tornado": "竜巻" // 50d
   };
 
   // API からデータを取得する関数
@@ -174,7 +199,7 @@ jQuery(function ($) {
 
         // 天気情報を HTML に表示
         const temp = data.main.temp.toFixed(1);
-        document.getElementById('temp').textContent = `${temp} ℃`;
+        document.getElementById('temp').textContent = `${temp}℃`;
 
         // 天気の説明を日本語に翻訳
         const descriptions = data.weather.map(w => translations[w.description] || w.description);
@@ -182,14 +207,14 @@ jQuery(function ($) {
         document.getElementById('weather-description').textContent = combinedDescription;
 
         // 天気アイコンの設定
-        const iconUrl = `http://openweathermap.org/img/wn/${data.weather[0].icon}.png`;
+        const iconUrl = `/assets/img/weather/weather${data.weather[0].icon}.svg`;
         document.getElementById('weather-image').src = iconUrl;
       })
       .catch(error => console.error('Error fetching weather data:', error));
     $('.weather-info').addClass('active');
   }
 
-  $('.weather-info').addClass(weather_eng);
+  $('.weather-info').addClass('weather_eng');
   // UNIXタイムスタンプを日付に変換して表示する関数
   function displayTodayDate(timestamp) {
     // UNIXタイムスタンプをミリ秒に変換
@@ -204,11 +229,15 @@ jQuery(function ($) {
     const formattedMonth = month < 10 ? month : month;
     const formattedDay = day < 10 ? day : day;
 
+    // 曜日を日本語に変換
+    const daysOfWeek = ['日', '月', '火', '水', '木', '金', '土'];
+    const weekday = daysOfWeek[date.getDay()];
+
     // 「M月D日」形式で日付を表示
-    const todayDate = `${formattedMonth}月${formattedDay}日`;
+    const todayDate = `${formattedMonth}<small>月</small>${formattedDay}<small>日(${weekday})</small>`;
 
     // HTML要素に日付を表示
-    document.getElementById('today-date').textContent = todayDate;
+    document.getElementById('today-date').innerHTML = todayDate;
   }
   // ページが読み込まれたときに天気情報を取得
   window.onload = getWeather;

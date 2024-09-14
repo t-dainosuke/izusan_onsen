@@ -1,3 +1,7 @@
+.mainvisual {
+  margin-bottom: -18px;
+}
+
 .mainvisual-wrapper {
   position: relative;
 
@@ -56,6 +60,10 @@
       &.active #temperature {
         display: block;
       }
+
+      a {
+        display: block;
+      }
     }
 
     .todays-weather {
@@ -70,6 +78,10 @@
       font-size: 1.6rem;
       line-height: calc(18.75 / 16);
       margin-bottom: 9px;
+      small {
+        font-size: 1.4rem;
+        line-height: calc(20.27 / 14);
+      }
     }
 
     #weather-icon,
@@ -91,29 +103,29 @@
     position: relative;
     display: flex;
 
-    > div {
+    >div {
       margin-left: 20px;
     }
 
     .mainvisual_img01 {
       filter: drop-shadow(32px 56px 0px #FAA500);
-      margin-top: 56px;
+      margin-top: 13px;
       padding-right: 32px;
       padding-bottom: 56px;
     }
 
     .mainvisual_img02 {
-      filter: drop-shadow(-56px -32px 0px #71BAFE);
+      filter: drop-shadow(-32px -56px 0px #71BAFE);
+      margin-top: 34px;
       padding-top: 56px;
-      padding-left: 56px;
-      padding-bottom: 32px;
+      padding-left: 32px;
     }
 
     .mainvisual_img03 {
-      filter: drop-shadow(56px 32px 0px #FF3B3B);
-      margin-top: 25px;
-      padding-right: 56px;
-      padding-bottom: 32px;
+      filter: drop-shadow(32px 56px 0px #FF3B3B);
+      margin-top: 0;
+      padding-right: 32px;
+      padding-bottom: 56px;
     }
   }
 }

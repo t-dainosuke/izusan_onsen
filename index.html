@@ -78,7 +78,7 @@
   <section>
     <div class="mainvisual-wrapper">
       <div class="mainvisual">
-        <div class="slider">
+        <div id="mainvisual-slider" class="slider">
           <div>
             <div class="mainvisual-inner">
               <div class="mainvisual_img01">
@@ -133,15 +133,17 @@
             <span>ここにある</span>
         </h1>
         <div class="weather-info">
-          <p class="todays-weather">今日の天気</p>
-          <div class="weather-info-wrapper">
-            <p id="today-date">データが<br>取得<br>できません。</p>
-            <div id="weather-icon">
-              <img id="weather-image" src="https://placehold.jp/1x1.png" alt="天気アイコン">
+          <a href="https://weather.yahoo.co.jp/weather/22/5020/22205.html" target="_blank">
+            <p class="todays-weather">今日の天気</p>
+            <div class="weather-info-wrapper">
+              <p id="today-date">データが<br>取得<br>できません</p>
+              <div id="weather-icon">
+                <img id="weather-image" src="https://placehold.jp/1x1.png" alt="天気アイコン">
+              </div>
+              <p id="description"><span id="weather-description"></span></p>
+              <p id="temperature"><span id="temp"></span></p>
             </div>
-            <p id="description"><span id="weather-description"></span></p>
-            <p id="temperature"><span id="temp"></span></p>
-          </div>
+          </a>
         </div>
       </div>
     </div>
