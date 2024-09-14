@@ -91,23 +91,6 @@ jQuery(function ($) {
   $('#mainvisual-slider').append(clonedElements); // クローンした要素を親コンテナに追加
 
   /* slick option */
-
-  // スライダーのクローンを生成する関数
-  function cloneSlides(selector) {
-    const $slider = $(selector);
-    const $slides = $slider.find('> *');
-
-    // クローンを生成
-    $slides.each(function () {
-      const $clone = $(this).clone();
-      $slider.append($clone);
-    });
-  }
-
-  // クローンを生成する
-  cloneSlides('.mainvisual .slider');
-  cloneSlides('.top-gallery-slider.slider');
-
   $('.mainvisual .slider').slick({
     autoplay: true, //自動でスクロール
     infinite: true,
