@@ -38,31 +38,62 @@
     }
 
     .weather-info {
+      min-width: 151px;
       border: 1px solid var(--border-color-black);
       border-radius: 10px;
+      background-color: #fff;
+      text-align: center;
 
-      .todays-weather {
-        font-size: 1.4rem;
-        line-height: calc(20.27 / 14);
-        text-align: center;
-        padding: 8px 10px;
-        border-bottom: 1px solid var(--border-color-black)
+      &.active #weather-icon {
+        display: block;
       }
 
-      #weather-icon img {
+      &.active #weather-icon img {
         width: fit-content;
       }
 
-      .weather-info-wrapper {
-        padding: 8px 10px;
+      &.active #description,
+      &.active #temperature {
+        display: block;
       }
+    }
+
+    .todays-weather {
+      font-size: 1.4rem;
+      line-height: calc(20.27 / 14);
+      text-align: center;
+      padding: 8px 10px;
+      border-bottom: 1px solid var(--border-color-black);
+    }
+
+    #today-date {
+      font-size: 1.6rem;
+      line-height: calc(18.75 / 16);
+      margin-bottom: 9px;
+    }
+
+    #weather-icon,
+    #escription,
+    #temperature {
+      display: none;
+    }
+
+    .weather-info-wrapper #description {
+      margin-top: 9px;
+    }
+
+    .weather-info-wrapper {
+      padding: 8px 10px;
     }
   }
 
   .mainvisual-inner {
     position: relative;
     display: flex;
-    margin: 0 20px;
+
+    > div {
+      margin-left: 20px;
+    }
 
     .mainvisual_img01 {
       filter: drop-shadow(32px 56px 0px #FAA500);
@@ -74,13 +105,15 @@
     .mainvisual_img02 {
       filter: drop-shadow(-56px -32px 0px #71BAFE);
       padding-top: 56px;
-      padding-left: 32px;
+      padding-left: 56px;
+      padding-bottom: 32px;
     }
 
     .mainvisual_img03 {
       filter: drop-shadow(56px 32px 0px #FF3B3B);
       margin-top: 25px;
-      padding-bottom: 56px;
+      padding-right: 56px;
+      padding-bottom: 32px;
     }
   }
 }

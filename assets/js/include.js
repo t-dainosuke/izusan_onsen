@@ -32,6 +32,6 @@
   `);
 
   document.footer.insertAdjacentHTML('afterbegin', `
-
-  `);
+    
+    `);
 }

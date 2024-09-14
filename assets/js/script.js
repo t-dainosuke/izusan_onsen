@@ -40,56 +40,6 @@ if (!canonicalMetaTag) {
 }
 canonicalMetaTag.setAttribute('href', ogUrl);
 
-// OpenWeatherMap
-const apiKey = '3c2ca98bfc502150b6e40b43d09ef673';
-const city = 'Atami';
-
-// OpenWeatherMap API の URL
-const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&lang=jp&units=metric`;
-
-// API からデータを取得する関数
-// 天気の英語の説明を日本語に変換するための辞書
-const translations = {
-  "clear sky": "晴れ",
-  "few clouds": "少し雲がある",
-  "scattered clouds": "ばらついた雲",
-  "broken clouds": "曇り",
-  "shower rain": "にわか雨",
-  "rain": "雨",
-  "thunderstorm": "雷雨",
-  "snow": "雪",
-  "mist": "霧"
-};
-
-// API からデータを取得する関数
-function getWeather() {
-  fetch(apiUrl)
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      return response.json();
-    })
-    .then(data => {
-      // 天気情報を HTML に表示
-      document.getElementById('city').textContent = data.name;
-      document.getElementById('temp').textContent = data.main.temp + ' ℃';
-
-      // 天気の説明を日本語に翻訳
-      const description = data.weather[0].description;
-      const translatedDescription = translations[description] || description;
-      document.getElementById('weather-description').textContent = translatedDescription;
-
-      // 天気アイコンの設定
-      const iconUrl = `http://openweathermap.org/img/wn/${data.weather[0].icon}.png`;
-      document.getElementById('weather-image').src = iconUrl;
-    })
-    .catch(error => console.error('Error fetching weather data:', error));
-}
-
-// ページが読み込まれたときに天気情報を取得
-window.onload = getWeather;
-
 jQuery(function ($) {
   // ヘッダーの高さを代入する処理
   function setHeaderHeights() {
@@ -142,9 +92,8 @@ jQuery(function ($) {
   $('.mainvisual .slider').slick({
     autoplay: true, //自動でスクロール
     autoplaySpeed: 0, //自動再生のスライド切り替えまでの時間を設定
-    speed: 5000, //スライドが流れる速度を設定
+    speed: 12000, //スライドが流れる速度を設定
     cssEase: "linear", //スライドの流れ方を等速に設定
-    slidesToShow: 4, //表示するスライドの数
     swipe: false, // 操作による切り替えはさせない
     arrows: false, //矢印非表示
     pauseOnFocus: false, //スライダーをフォーカスした時にスライドを停止させるか
@@ -176,5 +125,93 @@ jQuery(function ($) {
       }
     ]
   });
+
+  // OpenWeatherMap API の URL
+  const apiKey = '3c2ca98bfc502150b6e40b43d09ef673';
+  const city = 'Atami';
+  const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&lang=jp&units=metric`;
+
+  // 天気の英語の説明を日本語に変換するための辞書
+  const translations = {
+    "clear sky": "晴れ",
+    "few clouds": "曇り時々晴れ",
+    "scattered clouds": "曇り",
+    "broken clouds": "曇り",
+    "overcast clouds": "曇り",
+    "shower rain": "にわか雨",
+    "rain": "雨",
+    "thunderstorm": "雷雨",
+    "snow": "雪",
+    "mist": "霧",
+    "drizzle": "細かい雨",
+    "heavy intensity rain": "強い雨",
+    "light rain": "小雨",
+    "moderate rain": "中程度の雨",
+    "heavy snow": "大雪",
+    "light snow": "小雪",
+    "sleet": "みぞれ",
+    "haze": "もや",
+    "fog": "霧",
+    "sand": "砂嵐",
+    "dust": "ほこり",
+    "volcanic ash": "火山灰",
+    "squall": "突風",
+    "tornado": "竜巻"
+  };
+
+  // API からデータを取得する関数
+  function getWeather() {
+    fetch(apiUrl)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(data => {
+        // 今日の日付を出力
+        displayTodayDate(data.dt);
+
+        // 天気情報を HTML に表示
+        const temp = data.main.temp.toFixed(1);
+        document.getElementById('temp').textContent = `${temp} ℃`;
+
+        // 天気の説明を日本語に翻訳
+        const descriptions = data.weather.map(w => translations[w.description] || w.description);
+        const combinedDescription = descriptions.join(' / ');
+        document.getElementById('weather-description').textContent = combinedDescription;
+
+        // 天気アイコンの設定
+        const iconUrl = `http://openweathermap.org/img/wn/${data.weather[0].icon}.png`;
+        document.getElementById('weather-image').src = iconUrl;
+      })
+      .catch(error => console.error('Error fetching weather data:', error));
+    $('.weather-info').addClass('active');
+  }
+
+  $('.weather-info').addClass(weather_eng);
+  // UNIXタイムスタンプを日付に変換して表示する関数
+  function displayTodayDate(timestamp) {
+    // UNIXタイムスタンプをミリ秒に変換
+    const date = new Date(timestamp * 1000);
+
+    // 年、月、日を取得
+    const year = date.getFullYear();
+    const month = date.getMonth() + 1; // 月は0から始まるので+1する
+    const day = date.getDate();
+
+    // 月と日が一桁の場合はゼロを取り、二桁の場合はそのまま表示
+    const formattedMonth = month < 10 ? month : month;
+    const formattedDay = day < 10 ? day : day;
+
+    // 「M月D日」形式で日付を表示
+    const todayDate = `${formattedMonth}月${formattedDay}日`;
+
+    // HTML要素に日付を表示
+    document.getElementById('today-date').textContent = todayDate;
+  }
+  // ページが読み込まれたときに天気情報を取得
+  window.onload = getWeather;
+
 });
 

@@ -334,8 +334,7 @@ section[class*="bg-"]:not(.top-gallery)+section {
 }
 
 .top-gallery {
-  overflow-x: hidden;
-  padding-bottom: 80px;
+  padding-bottom: 80px !important;
 
   .medium-width-wrapper {
     display: flex;
@@ -402,6 +401,7 @@ section[class*="bg-"]:not(.top-gallery)+section {
     background-position: center;
     border-radius: 10px;
     position: relative;
+    margin: 0 0 50px;
     padding: 94px 120px 97px;
 
     &::after {
