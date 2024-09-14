@@ -6,6 +6,7 @@
   position: relative;
 
   .main-visual-text {
+    min-height: 182px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -29,7 +30,7 @@
 
         & span {
           display: inline-block;
-          padding: 8px 32px;
+          padding: 9px 32px 7px;
           border: 1px solid var(--border-color-black);
           border-radius: 10px;
           background-color: var(--color-white);
@@ -42,23 +43,19 @@
     }
 
     .weather-info {
+      display: none;
       min-width: 151px;
       border: 1px solid var(--border-color-black);
       border-radius: 10px;
       background-color: #fff;
       text-align: center;
 
-      &.active #weather-icon {
+      &.active {
         display: block;
       }
 
       &.active #weather-icon img {
         width: fit-content;
-      }
-
-      &.active #description,
-      &.active #temperature {
-        display: block;
       }
 
       a {
@@ -77,20 +74,18 @@
     #today-date {
       font-size: 1.6rem;
       line-height: calc(18.75 / 16);
-      margin-bottom: 9px;
-      small {
-        font-size: 1.4rem;
-        line-height: calc(20.27 / 14);
+
+      >div {
+        margin-bottom: 9px;
+
+        small {
+          font-size: 1.4rem;
+          line-height: calc(20.27 / 14);
+        }
       }
     }
 
-    #weather-icon,
-    #escription,
-    #temperature {
-      display: none;
-    }
-
-    .weather-info-wrapper #description {
+    .weather-info-wrapper #description>div {
       margin-top: 9px;
     }
 

@@ -187,14 +187,13 @@ jQuery(function ($) {
         // 天気の説明を日本語に翻訳
         const descriptions = data.weather.map(w => translations[w.description] || w.description);
         const combinedDescription = descriptions.join(' / ');
-        document.getElementById('weather-description').textContent = combinedDescription;
+        document.getElementById('description').textContent = combinedDescription;
 
         // 天気アイコンの設定
         const iconUrl = `/assets/img/weather/weather${data.weather[0].icon}.svg`;
         document.getElementById('weather-image').src = iconUrl;
       })
       .catch(error => console.error('Error fetching weather data:', error));
-    $('.weather-info').addClass('active');
   }
 
   $('.weather-info').addClass('weather_eng');
@@ -217,12 +216,13 @@ jQuery(function ($) {
     const weekday = daysOfWeek[date.getDay()];
 
     // 「M月D日」形式で日付を表示
-    const todayDate = `${formattedMonth}<small>月</small>${formattedDay}<small>日(${weekday})</small>`;
+    const todayDate = `<div>${formattedMonth}<small>月</small>${formattedDay}<small>日(${weekday})</small></div>`;
 
     // HTML要素に日付を表示
     document.getElementById('today-date').innerHTML = todayDate;
   }
   // ページが読み込まれたときに天気情報を取得
+  $('.weather-info').addClass('active');
   window.onload = getWeather;
 
 });
