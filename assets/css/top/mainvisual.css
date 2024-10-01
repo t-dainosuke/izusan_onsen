@@ -14,7 +14,7 @@
     bottom: -86px;
     left: 50%;
     transform: translateX(-50%);
-    z-index: 1;
+    z-index: 998;
 
     & h1 {
       font-size: 3.4rem;

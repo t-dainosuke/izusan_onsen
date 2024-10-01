@@ -45,7 +45,7 @@ jQuery(function ($) {
   function setHeaderHeights() {
     var commonHeaderHeight = $(".nav-header-wrapper").outerHeight();
     // ハンバーガーメニューの上部にheaderの高さ分の余白をつける
-    $("header + *").css("padding-top", commonHeaderHeight + "px");
+    $("header + *").css("margin-top", commonHeaderHeight + "px");
   }
   // リサイズ時にもsetHeaderHeightsを実行
   $(window).on('resize', function () {
@@ -90,78 +90,84 @@ jQuery(function ($) {
   var clonedElements = $('#mainvisual-slider > *').clone(); // 要素をクローン
   $('#mainvisual-slider').append(clonedElements); // クローンした要素を親コンテナに追加
 
-/* slick option */
-$(document).ready(function () {
-  // スライダーの初期化
-  var $infiniteSlider = $('#mainvisual-slider, .top-gallery-slider');
+  /* slick option */
+  $(document).ready(function () {
+    // スライダーの初期化関数
+    function initializeSlider(selector) {
+      $(selector).slick({
+        autoplay: true,
+        infinite: true,
+        swipe: false,
+        autoplaySpeed: 0,
+        speed: 15000,
+        cssEase: "linear",
+        arrows: false,
+        pauseOnFocus: false,
+        pauseOnHover: false,
+        variableWidth: true,
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        centerMode: true,
+        centerPadding: '0px',
+        responsive: [
+          {
+            breakpoint: 768,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1,
+              infinite: true,
+            }
+          },
+          {
+            breakpoint: 1024,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 1,
+              infinite: true,
+            }
+          }
+        ]
+      });
+    }
 
-  $infiniteSlider.slick({
-    autoplay: true, // 自動でスクロール
-    infinite: true, // 無限ループを有効化
-    swipe: false, // スワイプを無効化
-    autoplaySpeed: 0, // 自動再生のスライド切り替えまでの時間を設定
-    speed: 15000, // スライドが流れる速度を設定
-    cssEase: "linear", // スライドの流れ方を等速に設定
-    arrows: false, // 矢印非表示
-    pauseOnFocus: false, // スライダーをフォーカスした時にスライドを停止させない
-    pauseOnHover: false, // スライダーにマウスホバーした時にスライドを停止させない
-    variableWidth: true, // 幅を可変にする
-    slidesToShow: 3, // 一度に表示するスライドの数
-    slidesToScroll: 1, // スクロール時に移動するスライドの数
-    centerMode: true, // センターモードを有効にする
-    centerPadding: '0px', // センターモード時のパディングを設定
-    responsive: [
-      {
-        breakpoint: 768, // 768px未満の画面サイズに対する設定
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          infinite: true,
-        }
-      },
-      {
-        breakpoint: 1024, // 1024px未満の画面サイズに対する設定
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-          infinite: true,
-        }
-      }
-    ]
-  });
-
-  // Intersection Observerを使って、最初のスライドが表示された時にクローンを作成する
-  var observer = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
-      if (entry.isIntersecting) {
-        // 最初のスライドが右側から現れた時
-        createClones();
-        // 監視を解除
-        observer.unobserve(entry.target);
-      }
-    });
-  }, {
-    root: null, // ビューポート基準
-    threshold: 0.1 // スライドの10%が表示されたら処理を開始
-  });
-
-  // 最初のスライドを監視
-  observer.observe($infiniteSlider.find('.slick-slide').first()[0]);
-
-  // クローンを作成する関数
-  function createClones() {
-    var $slides = $infiniteSlider.find('.slick-slide:not(.slick-clone)'); // クローンではないスライドを選択
-
-    // すべてのスライドをクローン
-    $slides.each(function () {
-      var $clone = $(this).clone().addClass('slick-clone'); // クローンにslick-cloneクラスを追加
-      $infiniteSlider.append($clone); // スライダーの後にクローンを追加
+    // スライダーの初期化
+    initializeSlider('#mainvisual-slider');
+    $('.top-gallery-slider').each(function () {
+      initializeSlider(this);
     });
 
-    // 再度slickを初期化してクローンを認識させる
-    $infiniteSlider.slick('slickAdd', $clone);
-  }
-});
+    // Intersection Observerを使って、最初のスライドが表示された時にクローンを作成
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          createClones(entry.target); // 監視対象のスライダーを渡す
+          observer.unobserve(entry.target); // 監視解除
+        }
+      });
+    }, {
+      root: null,
+      threshold: 0.1
+    });
+
+    // 最初のスライドを監視
+    var $galletySlider = $('.top-gallery-slider');
+    observer.observe($galletySlider.find('.slick-slide').first()[0]);
+
+    // クローンを作成する関数
+    function createClones(target) {
+      var $slider = $(target);
+      var $slides = $slider.find('.slick-slide:not(.slick-clone)'); // クローンではないスライドを選択
+
+      // すべてのスライドをクローン
+      $slides.each(function () {
+        var $clone = $(this).clone().addClass('slick-clone'); // クローンにslick-cloneクラスを追加
+        $slider.append($clone); // スライダーの後にクローンを追加
+        $slider.slick('slickAdd', $clone); // 再度slickを初期化してクローンを認識させる
+      });
+    }
+  });
+
+  $('.main-content-wrapper').stickyStack();
 
 
   // OpenWeatherMap API の URL

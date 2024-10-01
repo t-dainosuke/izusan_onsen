@@ -1,6 +1,8 @@
 .top-section {
-  padding-top: 80px;
-  padding-bottom: 80px;
+  >*:first-of-type {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
 
   & h2 {
     display: inline-block;
@@ -151,6 +153,36 @@ section[class*="bg-"]:not(.top-gallery)+section {
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+  animation: steam-animation 5s infinite;
+}
+
+.top-about .top-border-right-img-wrapper::after {
+  animation-delay: .5s;
+}
+
+@keyframes steam-animation {
+  0% {
+    transform: translateY(0);
+    opacity: .1;
+  }
+
+  20% {
+    opacity: .4;
+  }
+
+  50% {
+    transform: translateY(-10px);
+    opacity: 1;
+  }
+
+  80% {
+    opacity: .6;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: .1;
+  }
 }
 
 .top-about .top-border-right-img-wrapper::before {
@@ -182,8 +214,30 @@ section[class*="bg-"]:not(.top-gallery)+section {
   bottom: 13px;
   left: 50%;
   transform: translateX(-50%);
+  animation: sun-animation ease-in-out 20s infinite;
 }
 
+@keyframes sun-animation {
+  0% {
+    transform: translateX(-50%) translateY(100%);
+    opacity: .3;
+  }
+
+  30% {
+    transform: translateX(-50%) translateY(0%);
+    opacity: 1;
+  }
+
+  70% {
+    transform: translateX(-50%) translateY(0%);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateX(-50%) translateY(100%);
+    opacity: .3;
+  }
+}
 
 .top-sightseeing01 {
 
@@ -425,6 +479,7 @@ section[class*="bg-"]:not(.top-gallery)+section {
 }
 
 .top-access {
+  background-color: #fff;
   margin: 0;
 
   .top-access-inner {
