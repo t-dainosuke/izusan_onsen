@@ -133,9 +133,43 @@ section[class*="bg-"]:not(.top-gallery)+section {
 
 .top-about {
   position: relative;
+  padding-left: 12.5%;
 }
 
-.top-about.icon-sun::after {
+.top-about .top-border-right-img-wrapper {
+  width: 100%;
+  max-width: 478px;
+  position: relative;
+
+}
+
+.top-about .top-border-right-img-wrapper::before,
+.top-about .top-border-right-img-wrapper::after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.top-about .top-border-right-img-wrapper::before {
+  width: 67.44px;
+  height: 130px;
+  top: -37px;
+  left: 0;
+  background-image: url(/assets/img/top/about-img01-1.png);
+}
+
+.top-about .top-border-right-img-wrapper::after {
+  width: 62.1px;
+  height: 100px;
+  top: calc(106px - 37px);
+  right: 60px;
+  background-image: url(/assets/img/top/about-img01-2.png);
+}
+
+.icon-sun::after {
   content: "";
   display: inline-block;
   width: 253px;
