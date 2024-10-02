@@ -1,0 +1,11 @@
+
+#####wpcomment_nojpdeny#####
+SetEnvIf Request_URI ".*" WpCommentDeny
+#####end:wpcomment_nojpdeny#####
+
+#####basicauth#####
+AuthUserFile "/home/izusan/izusan.starfree.jp/htpasswd/.htpasswd"
+AuthName "Member Site"
+AuthType BASIC
+require valid-user
+#####end:basicauth#####

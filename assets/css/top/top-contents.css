@@ -157,7 +157,11 @@ section[class*="bg-"]:not(.top-gallery)+section {
 }
 
 .top-about .top-border-right-img-wrapper::after {
-  animation-delay: .5s;
+  animation-delay: .8s;
+}
+
+section.stack+.stack {
+  display: none;
 }
 
 @keyframes steam-animation {
@@ -429,6 +433,7 @@ section[class*="bg-"]:not(.top-gallery)+section {
     justify-content: space-between;
     align-items: flex-end;
     margin-bottom: 16px;
+    padding: 80px 0 0;
   }
 
   & h2 {
@@ -472,6 +477,7 @@ section[class*="bg-"]:not(.top-gallery)+section {
       margin-top: 8px;
       position: relative;
       left: -100px;
+      margin-bottom: 32px;
     }
   }
 

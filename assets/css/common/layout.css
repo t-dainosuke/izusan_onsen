@@ -6,7 +6,8 @@
 }
 
 .top-section {
-  margin: 56px calc(50% - 50vw) -56px;
+  width: 100vw !important;
+  margin: 85.66px calc(50% - 50vw) -67px;
   padding: 0 calc(50vw - 50%) 56px;
   background-size: 250px;
 }

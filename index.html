@@ -135,9 +135,9 @@
         <a href="https://weather.yahoo.co.jp/weather/22/5020/22205.html" target="_blank">
           <p class="todays-weather">現在の天気</p>
           <div class="weather-info-wrapper">
-            <p id="today-date">データが<br>取得<br>できません</p>
+            <p id="today-date">クリックして<br>天気を<br>確認してください。</p>
             <div id="weather-icon">
-              <img id="weather-image" src="https://placehold.jp/1x1.png" alt="天気アイコン" height="0">
+              <img onerror="this.remove()" id="weather-image" src="https://placehold.jp/1x1.png" alt="天気アイコン" height="0">
             </div>
             <p id="description"><span id="weather-description"></span></p>
             <p id="temperature"><span id="temp"></span></p>
@@ -396,7 +396,7 @@
         </div>
       </div>
     </section>
-    <section class="top-access top-section">
+    <section class="bg-white top-access top-section">
       <div class="large-width-wrapper">
         <div class="top-access-inner top-border-wrapper">
           <h2>交通・アクセス</h2>

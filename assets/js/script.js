@@ -167,7 +167,41 @@ jQuery(function ($) {
     }
   });
 
-  $('.main-content-wrapper').stickyStack();
+  $(document).ready(function () {
+    // headerの高さを取得（パディング、ボーダー、マージンを含む）
+    var headerHeight = $('header.nav-header-wrapper').outerHeight();
+    
+    // *[class^="bg-"]::before の高さを固定で56pxに設定
+    var bgBeforeHeight = 85;
+    
+    // 合計の高さを計算
+    var totalHeight = headerHeight + bgBeforeHeight;
+    
+    // プレースホルダーの要素を作成して高さを設定
+    var headerPlaceholder = $('<div class="header-placeholder"></div>').height(headerHeight);
+    
+    // ヘッダーが固定されるときにプレースホルダーを挿入
+    $(window).on('scroll', function () {
+      if ($(window).scrollTop() > headerHeight) {
+        if (!$('.header-placeholder').length) {
+          $('header.nav-header-wrapper').after(headerPlaceholder);
+        }
+        $('header.nav-header-wrapper').addClass('is-sticky');
+      } else {
+        $('.header-placeholder').remove();
+        $('header.nav-header-wrapper').removeClass('is-sticky');
+      }
+    });
+  
+    // .main-content-wrapperにstickyStackを適用し、headerとbefore疑似要素の合計高さをoffsetTopとして設定
+    $('.main-content-wrapper').stickyStack({
+      offsetTop: totalHeight, // headerとbefore疑似要素の高さの合計をoffsetTopに設定
+      container: '.content-container', // 固定される要素のコンテナ
+      spacing: 10, // 固定される要素とページ上端の間隔
+      stickyClass: 'is-sticky', // 固定状態のクラス名
+      direction: 'top' // 上方向に固定
+    });
+  });
 
 
   // OpenWeatherMap API の URL

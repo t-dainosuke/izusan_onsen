@@ -49,11 +49,16 @@
       border-radius: 10px;
       background-color: #fff;
       text-align: center;
-      transition: opacity .5s;
+      transform: scale(1);
+      transition: opacity .5s, transform .3s;
+
+      &:hover {
+        transform: scale(1.05);
+      }
 
       &.active {
         opacity: 1;
-        transition-delay: .3s;
+        transition-delay: .3s, 0s;
       }
 
       &.active #weather-icon img {
