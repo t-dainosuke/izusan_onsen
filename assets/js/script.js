@@ -170,16 +170,16 @@ jQuery(function ($) {
   $(document).ready(function () {
     // headerの高さを取得（パディング、ボーダー、マージンを含む）
     var headerHeight = $('header.nav-header-wrapper').outerHeight();
-    
+
     // *[class^="bg-"]::before の高さを固定で56pxに設定
     var bgBeforeHeight = 85;
-    
+
     // 合計の高さを計算
     var totalHeight = headerHeight + bgBeforeHeight;
-    
+
     // プレースホルダーの要素を作成して高さを設定
     var headerPlaceholder = $('<div class="header-placeholder"></div>').height(headerHeight);
-    
+
     // ヘッダーが固定されるときにプレースホルダーを挿入
     $(window).on('scroll', function () {
       if ($(window).scrollTop() > headerHeight) {
@@ -192,10 +192,19 @@ jQuery(function ($) {
         $('header.nav-header-wrapper').removeClass('is-sticky');
       }
     });
-  
-    // .main-content-wrapperにstickyStackを適用し、headerとbefore疑似要素の合計高さをoffsetTopとして設定
+
+    // クラス名が "bg-texture-" で始まる section タグを選択
+    var beforeElement = document.querySelector('section[class^="bg-texture-"]'); // クラス名が "bg-texture-" で始まるセクションを指定
+
+    // before疑似要素の高さを取得
+    var beforeElementHeight = window.getComputedStyle(beforeElement, '::before').getPropertyValue('height').replace('px', '');
+
+    // offsetTopにbefore疑似要素の高さを設定
+    var totalHeight = parseInt(beforeElementHeight, 10);
+
+    // stickyStackの初期化
     $('.main-content-wrapper').stickyStack({
-      offsetTop: totalHeight, // headerとbefore疑似要素の高さの合計をoffsetTopに設定
+      offsetTop: totalHeight, // before疑似要素の高さをoffsetTopに設定
       container: '.content-container', // 固定される要素のコンテナ
       spacing: 10, // 固定される要素とページ上端の間隔
       stickyClass: 'is-sticky', // 固定状態のクラス名

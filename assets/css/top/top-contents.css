@@ -11,6 +11,11 @@
     font-weight: 500;
     font-family: var(--font-title);
     margin-bottom: 2.4rem;
+
+    @media (max-width: 1024px) {
+      font-size: 2.6rem;
+      line-height: calc(38.45 / 26);
+    }
   }
 }
 
@@ -131,6 +136,10 @@ section[class*="bg-"]:not(.top-gallery)+section {
 .news-list.top-border-left {
   border-radius: 0 10px 10px 10px;
   padding: 14.5px 32px;
+
+  @media (max-width: 1024px) {
+    padding: 12px 24px;
+  }
 }
 
 .top-about {
@@ -498,6 +507,10 @@ section.stack+.stack {
     position: relative;
     margin: 0 0 50px;
     padding: 94px 120px 97px;
+
+    @media (max-width: 1024px) {
+      width: 100%;
+    }
 
     &::after {
       content: "";

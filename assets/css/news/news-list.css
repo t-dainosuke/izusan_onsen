@@ -18,6 +18,11 @@
       flex-wrap: wrap;
       padding: 16px 0;
 
+      @media (max-width: 1024px) {
+        padding: 12px 0;
+      }
+
+
 
       >* {
         display: flex;
@@ -66,6 +71,14 @@
       align-content: center;
       margin-left: 16px;
 
+      @media (max-width: 1024px) {
+        display: inline;
+        font-size: 1.8rem;
+        line-height: calc(28.8 / 18);
+        margin-top: 8px;
+        margin-left: 0;
+      }
+
       &::after {
         content: "";
         display: inline-block;
@@ -77,6 +90,11 @@
         background-repeat: no-repeat;
         margin-left: 16px;
         transition: margin-left .2s;
+
+        @media (max-width: 1024px) {
+          vertical-align: middle;
+          transform: translateY(-12%);
+        }
       }
     }
   }

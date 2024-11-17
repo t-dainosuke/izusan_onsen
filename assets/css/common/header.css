@@ -159,10 +159,12 @@ nav {
   width: -moz-fit-content;
   width: -webkit-fit-content;
   width: fit-content;
-  height: clamp(13px, 3.466666666666667vw, 26px);
+
   margin-right: 0;
   margin-left: auto;
   cursor: pointer;
+  background-color: var(--border-color-black);
+  padding: 14px 10px;
 
   @media (min-width: 1025px) {
     display: none;
@@ -177,7 +179,9 @@ nav {
 
     @media (max-width: 1024px) {
       width: clamp(40px, 10.666666666666666vw, 90px);
-      height: clamp(13px, 3.466666666666667vw, 26px);
+      height: clamp(40px, 10.666666666666666vw, 90px);
+      width: 40px;
+      height: 24px;
     }
 
     @media (max-width: 768px) and (orientation: landscape) {
@@ -190,7 +194,7 @@ nav {
 
       .line {
         /* ハンバーガーメニューオープン時の線の色を変えたい時 */
-        background-color: var(--border-color-black);
+        background-color: inherit;
       }
     }
 
@@ -199,13 +203,13 @@ nav {
       right: 0;
       left: 0;
       display: block;
-      width: 100%;
+      width: 20px;
       height: clamp(1px, .26666666666666666vw, 2px);
       margin: auto;
       -webkit-transition-duration: 300ms;
       transition-duration: 300ms;
       /* ハンバーガーメニューの線の色を変えたい時 */
-      background-color: #000;
+      background-color: var(--color-white);
     }
   }
 }
@@ -213,8 +217,11 @@ nav {
 .hamburger-lines .hamburger-lines.active .hamburger-lines .line:nth-child(1) {
   top: 0;
 }
-
 .hamburger-lines .line:nth-child(2) {
+  top: 50%;
+  transform: translateY(-50%);
+}
+.hamburger-lines .line:nth-child(3) {
   bottom: 0;
 }
 
