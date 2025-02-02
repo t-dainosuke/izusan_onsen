@@ -5,12 +5,21 @@
   --color-yellow: #E9DF00;
   --color-orange: #FFB016;
   --color-skyblue: #71BAFE;
+  --color-cream: #F9F5DE;
 
   --color-news-blue: #0285FF;
   --color-news-orange: #F08100;
   --color-news-red: #EB0000;
 
+  --color-annotation: #d90000;
+
   --border-color-black: #333;
+
+  --bg-gray: #F4F4F4;
+  --bg-yellow: #FFEFCF;
+  --bg-blue: #D3F5FF;
+
+
 
   /* font */
   --font-main: "Zen Kaku Gothic Antique", sans-serif;
@@ -23,12 +32,18 @@
   /* link icon */
   --icon-link: url('data:image/svg+xml;charset=utf8,%3Csvg%20width%3D%2260%22%20height%3D%2260%22%20viewBox%3D%220%200%2060%2060%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%221%22%20y%3D%221%22%20width%3D%2258%22%20height%3D%2258%22%20rx%3D%2229%22%20stroke%3D%22%23111111%22%20stroke-width%3D%222%22%2F%3E%0A%3Cpath%20d%3D%22M29.3%2037.3C29.1167%2037.1167%2029.0207%2036.8833%2029.012%2036.6C29.004%2036.3167%2029.0917%2036.0833%2029.275%2035.9L34.175%2031H23C22.7167%2031%2022.479%2030.904%2022.287%2030.712C22.0957%2030.5207%2022%2030.2833%2022%2030C22%2029.7167%2022.0957%2029.479%2022.287%2029.287C22.479%2029.0957%2022.7167%2029%2023%2029H34.175L29.275%2024.1C29.0917%2023.9167%2029.004%2023.6833%2029.012%2023.4C29.0207%2023.1167%2029.1167%2022.8833%2029.3%2022.7C29.4833%2022.5167%2029.7167%2022.425%2030%2022.425C30.2833%2022.425%2030.5167%2022.5167%2030.7%2022.7L37.3%2029.3C37.4%2029.3833%2037.471%2029.4873%2037.513%2029.612C37.5543%2029.7373%2037.575%2029.8667%2037.575%2030C37.575%2030.1333%2037.5543%2030.2583%2037.513%2030.375C37.471%2030.4917%2037.4%2030.6%2037.3%2030.7L30.7%2037.3C30.5167%2037.4833%2030.2833%2037.575%2030%2037.575C29.7167%2037.575%2029.4833%2037.4833%2029.3%2037.3Z%22%20fill%3D%22%23111111%22%2F%3E%0A%3C%2Fsvg%3E%0A');
   --icon-sun: url('/assets/img/common/icon-sun.svg');
+  --link-arrow: url('/assets/img/common/link-arrow.svg');
+
+  /* map icon */
+  --icon-maps: url('data:image/svg+xml;charset=utf8,%3C!--%3Fxml%20version%3D%221.0%22%20encoding%3D%22utf-8%22%3F--%3E%0A%3C!--%20Generator%3A%20Adobe%20Illustrator%2015.1.0%2C%20SVG%20Export%20Plug-In%20.%20SVG%20Version%3A%206.00%20Build%200)%20%20--%3E%0A%0A%3Csvg%20version%3D%221.1%22%20id%3D%22_x32_%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20x%3D%220px%22%20y%3D%220px%22%20width%3D%22512px%22%20height%3D%22512px%22%20viewBox%3D%220%200%20512%20512%22%20style%3D%22width%3A%2016px%3B%20height%3A%2016px%3B%20opacity%3A%201%3B%22%20xml%3Aspace%3D%22preserve%22%3E%0A%3Cstyle%20type%3D%22text%2Fcss%22%3E%0A%0A%09.st0%7Bfill%3A%234B4B4B%3B%7D%0A%0A%3C%2Fstyle%3E%0A%3Cg%3E%0A%09%3Cpath%20class%3D%22st0%22%20d%3D%22M256%2C0C159.969%2C0%2C82.125%2C77.859%2C82.125%2C173.906C82.125%2C269.938%2C236.797%2C512%2C256%2C512%0A%09%09c19.219%2C0%2C173.875-242.063%2C173.875-338.094C429.875%2C77.859%2C352.031%2C0%2C256%2C0z%20M256%2C240.406c-36.719%2C0-66.5-29.781-66.5-66.5%0A%09%09c0-36.75%2C29.781-66.531%2C66.5-66.531s66.516%2C29.781%2C66.516%2C66.531C322.516%2C210.625%2C292.719%2C240.406%2C256%2C240.406z%22%20style%3D%22fill%3A%20rgb(17%2C%2017%2C%2017)%3B%22%3E%3C%2Fpath%3E%0A%3C%2Fg%3E%0A%3C%2Fsvg%3E');
   /* background texture */
+  --bg-texture-cream: url('/assets/img/common/bg-cream.jpg');
   --bg-texture-yellow: url('/assets/img/common/bg-yellow.jpg');
   --bg-texture-orange: url('/assets/img/common/bg-orange.jpg');
   --bg-texture-blue: url('/assets/img/common/bg-blue.jpg');
 
   /* background wave */
+  --bg-wave-texture-cream: url('/assets/img/common/bg-wave-texture-cream.png');
   --bg-wave-texture-yellow: url('/assets/img/common/bg-wave-texture-yellow.png');
   --bg-wave-texture-orange: url('/assets/img/common/bg-wave-texture-orange.png');
   --bg-wave-texture-blue: url('/assets/img/common/bg-wave-texture-blue.png');
@@ -40,6 +55,7 @@
   --bg-wave-skyblue: url('data:image/svg+xml;charset=utf8,%3Csvg%20width%3D%221280%22%20height%3D%2256%22%20viewBox%3D%220%200%201280%2056%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Cpath%20d%3D%22M1280%20120H0V18.8175C42.6693%20-6.27056%2085.333%20-6.27056%20128.002%2018.8175C170.672%2043.9056%20213.335%2043.9056%20256.004%2018.8175C298.674%20-6.27056%20341.337%20-6.27056%20384.007%2018.8175C426.676%2043.9056%20469.34%2043.9056%20512.009%2018.8175C554.678%20-6.27056%20597.342%20-6.27056%20640.011%2018.8175C682.68%2043.9056%20725.344%2043.9056%20768.013%2018.8175C810.683%20-6.27056%20853.346%20-6.27056%20896.016%2018.8175C938.685%2043.9056%20981.349%2043.9056%201024.02%2018.8175C1066.69%20-6.27056%201109.35%20-6.27056%201152.02%2018.8175C1194.69%2043.9056%201237.35%2043.9056%201280.02%2018.8175V120H1280Z%22%20fill%3D%22%2371BAFE%22%2F%3E%0A%3C%2Fsvg%3E%0A');
 
   --bg-access01: url('/assets/img/top/bg-access01.jpg');
+  --bg-access01_sp: url('/assets/img/top/bg-access01_sp.jpg');
   --illust-sightseeing: url('/assets/img/common/illust-sightseeing01.svg');
 
 }

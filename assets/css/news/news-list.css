@@ -48,6 +48,10 @@
       margin-left: 16px;
       padding: 4px 9px;
       text-align: center;
+
+      @media (max-width: 1024px) {
+        padding: 4px 8px;
+      }
     }
 
     /* お知らせ */
@@ -72,11 +76,16 @@
       margin-left: 16px;
 
       @media (max-width: 1024px) {
-        display: inline;
+        width: 100%;
         font-size: 1.8rem;
         line-height: calc(28.8 / 18);
         margin-top: 8px;
         margin-left: 0;
+        font-weight: 500;
+        display: flex;
+        justify-content: space-between;
+        position: relative;
+        padding-right: calc(100% - 86.44%);
       }
 
       &::after {
@@ -94,6 +103,9 @@
         @media (max-width: 1024px) {
           vertical-align: middle;
           transform: translateY(-12%);
+          margin-left: 21px;
+          position: absolute;
+          right: 0;
         }
       }
     }

@@ -1,0 +1,168 @@
+/* リンクアイコンホバーアクション */
+@keyframes arrow-slide {
+  0% {
+    transform: translateY(-50%) translateX(-50%);
+    /* 初期位置 */
+  }
+
+  50% {
+    transform: translateY(-50%) translateX(150%);
+    /* 右に消える */
+  }
+
+  51% {
+    transform: translateY(-50%) translateX(-150%);
+    /* 左端から再出現 */
+  }
+
+  100% {
+    transform: translateY(-50%) translateX(-50%);
+    /* 元の位置に戻る */
+  }
+}
+
+/* リンクボーダーホバーアクション */
+@keyframes link-hover {
+  0% {
+    transform: translateY(-50%) translateX(-100%);
+    /* 初期位置 */
+  }
+
+  50% {
+    transform: translateY(-50%) translateX(100%);
+    /* 元の位置に戻る */
+  }
+
+  51% {
+    transform: translateY(-50%) translateX(-100%);
+    /* 元の位置に戻る */
+  }
+
+  100% {
+    transform: translateY(-50%) translateX(0%);
+    /* 元の位置に戻る */
+  }
+}
+
+/* 太陽アニメーション */
+@keyframes sun-animation {
+  0% {
+    transform: translateX(-50%) translateY(100%);
+    opacity: .3;
+  }
+
+  30% {
+    transform: translateX(-50%) translateY(0%);
+    opacity: 1;
+  }
+
+  70% {
+    transform: translateX(-50%) translateY(0%);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateX(-50%) translateY(100%);
+    opacity: .3;
+  }
+}
+
+/* ウォーキングアニメーション */
+/* 横移動のアニメーション */
+@keyframes walk {
+  0% {
+    left: -100px;
+    /* 画面の左外から開始 */
+  }
+
+  100% {
+    left: 100vw;
+    /* 画面の右外まで移動 */
+  }
+}
+
+/* リアルな歩行の上下動 */
+@keyframes step {
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(0);
+    /* 基本位置 */
+  }
+
+  25% {
+    transform: translateY(8px) rotate(-2deg);
+    /* 左足を出す動作 */
+  }
+
+  50% {
+    transform: translateY(0) rotate(0);
+    /* 中央でバランス */
+  }
+
+  75% {
+    transform: translateY(8px) rotate(2deg);
+    /* 右足を出す動作 */
+  }
+}
+
+/* 湯気のアニメーション */
+@keyframes steam-animation {
+  0% {
+    transform: translateY(0);
+    opacity: .1;
+  }
+
+  20% {
+    opacity: .4;
+  }
+
+  50% {
+    transform: translateY(-10px);
+    opacity: 1;
+  }
+
+  80% {
+    opacity: .6;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: .1;
+  }
+}
+
+/* 点滅アニメーションの定義 */
+@keyframes firework-blink {
+
+  0% {
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
+
+  10% {
+    width: 100%;
+    /* 拡大 */
+    height: 100%;
+    opacity: 1;
+    filter: blur(0px);
+    /* 鮮明に */
+  }
+
+  /* 2. 明滅を開始 */
+  50% {
+    opacity: 0;
+    transform: scale(0);
+  }
+
+  60% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  70% {
+    opacity: 0;
+    transform: scale(1);
+  }
+}

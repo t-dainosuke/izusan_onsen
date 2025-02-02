@@ -12,11 +12,11 @@
   background-size: 250px;
 }
 
-*[class^="bg-"] {
+*[class^="bg-texture-"] {
   position: relative;
 }
 
-*[class^="bg-"]::before {
+*[class^="bg-texture-"]::before {
   content: "";
   display: inline-block;
   width: 100%;

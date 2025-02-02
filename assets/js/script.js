@@ -39,7 +39,33 @@ if (!canonicalMetaTag) {
   document.head.appendChild(canonicalMetaTag);
 }
 canonicalMetaTag.setAttribute('href', ogUrl);
+$(document).ready(function () {
+  // ヘッダーの高さを取得する関数
+  function getHeaderHeight() {
+    return $('header').outerHeight(); // headerタグの高さを取得（パディングやボーダーも含む）
+  }
 
+  // ページ内リンククリック時の処理
+  $('a[href^="#"]').on('click', function (e) {
+    e.preventDefault(); // デフォルトの動作を無効化
+
+    const target = $(this.hash); // リンク先ターゲット
+    if (target.length) {
+      const headerHeight = getHeaderHeight(); // ヘッダーの高さを取得
+      const targetPosition = target.offset().top - headerHeight; // スクロール位置を調整
+
+      // アニメーションでスクロール
+      $('html, body').animate({
+        scrollTop: targetPosition
+      }, 500, 'swing'); // スクロール速度: 500ms, イージング: swing
+    }
+  });
+
+  // ウィンドウリサイズ時の処理（高さの再計算が必要な場合）
+  $(window).on('resize', function () {
+    // 必要に応じて処理を追加可能
+  });
+});
 jQuery(function ($) {
   // ヘッダーの高さを代入する処理
   function setHeaderHeights() {
@@ -54,23 +80,67 @@ jQuery(function ($) {
   setHeaderHeights();
 
   // サブメニュー
-  var submenuHeight = $(".submenu").outerHeight();
-  $(".submenu > ul").css("top", submenuHeight + "px");
-  $(".submenu").hover(function () {
-    $("> ul", this).stop(true, true).slideDown("fast");
-  }, function () {
-    $("> ul", this).stop(true, true).slideUp("fast");
+  // 画面幅の判定関数
+  function isMobile() {
+    return window.innerWidth <= 768; // 768px以下をSPとする
+  }
+
+  // サブメニューの動作切り替え関数
+  function toggleSubmenu() {
+    if (isMobile()) {
+      // SPの時：クリックで開く
+      $(".submenu > ul").css("top", "auto").hide(); // 初期状態は隠す
+      $(".submenu").off("mouseenter mouseleave"); // PC用イベントを解除
+      $(".submenu").off("click").on("click", function (e) {
+        e.stopPropagation(); // 他のイベントを防ぐ
+        $(this).toggleClass('open');
+        var $submenu = $("> ul", this);
+        if ($submenu.is(":visible")) {
+          $submenu.slideUp("fast");
+        } else {
+          $(".submenu > ul").slideUp("fast"); // 他のサブメニューを閉じる
+          $submenu.slideDown("fast");
+        }
+      });
+    } else {
+      $(".submenu > ul").css("top", $(".submenu").outerHeight() + 4 + "px").hide();
+      $(".submenu").off("click");
+      $(".submenu").off("mouseenter mouseleave").hover(
+        function () {
+          clearTimeout($(this).data("timeout")); // 非表示タイマーを解除
+          $("> ul", this).stop(true, true).slideDown("fast");
+          $(this).addClass('open');
+        },
+        function () {
+          var self = this;
+          var timeout = setTimeout(function () {
+            $("> ul", self).stop(true, true).slideUp("fast");
+            $(self).removeClass('open');
+          }, 300); // 遅延時間（300ms）
+          $(this).data("timeout", timeout);
+        }
+      );
+    }
+  }
+
+  // 初期化
+  toggleSubmenu();
+
+  // ウィンドウリサイズ時に動作切り替え
+  $(window).resize(function () {
+    toggleSubmenu();
   });
 
   // ハンバーガーメニューのクリック処理
   $('#openbtn').on('click', function () {
     $(this).toggleClass('active'); // ボタン自身に.activeクラスをトグル
+    $('html').toggleClass('active');
     $('#hb-menu').toggleClass('active', $(this).hasClass('active')); // ハンバーガーメニューに.activeクラスをトグル
     if ($(this).hasClass('active')) {
       // ハンバーガーメニューがアクティブな場合の処理
       $('#openbtn .hamburger-lines').addClass('active');
-      $('#openbtn .hamburger-lines .line:nth-child(1)').css('width', '60%'); // 上の線の幅を60%に設定
-      $('#openbtn .hamburger-lines .line:nth-child(2)').css('width', '60%'); // 下の線の幅を60%に設定
+      $('#openbtn .hamburger-lines .line:nth-child(1)').css('width', '100%'); // 上の線の幅を60%に設定
+      $('#openbtn .hamburger-lines .line:nth-child(2)').css('width', '100%'); // 下の線の幅を60%に設定
       setTimeout(function () {
         // 交差させるために、上の線を下に、下の線を上に移動し、45度回転させる
         $('#openbtn .hamburger-lines .line:nth-child(1)').css('bottom', '0').css('transform', 'rotate(45deg)');
@@ -79,7 +149,7 @@ jQuery(function ($) {
     } else {
       // ハンバーガーメニューが非アクティブな場合の処理
       $('#openbtn .hamburger-lines .line:nth-child(1)').css('transform', 'rotate(0deg)').css('bottom', 'auto'); // 上の線の回転と位置を元に戻す
-      $('#openbtn .hamburger-lines .line:nth-child(2)').css('transform', 'rotate(0deg)').css('top', 'auto'); // 下の線の回転と位置を元に戻す
+      $('#openbtn .hamburger-lines .line:nth-child(2)').css('transform', 'rotate(0deg)').css('top', '50%'); // 下の線の回転と位置を元に戻す
       setTimeout(function () {
         $('#openbtn .hamburger-lines .line:nth-child(1)').css('width', '100%'); // 上の線の幅を元に戻す
         $('#openbtn .hamburger-lines .line:nth-child(2)').css('width', '100%'); // 下の線の幅を元に戻す
@@ -172,16 +242,16 @@ jQuery(function ($) {
     var headerHeight = $('header.nav-header-wrapper').outerHeight();
 
     // *[class^="bg-"]::before の高さを固定で56pxに設定
-    var bgBeforeHeight = 85;
+    var bgBeforeHeight = 56;
 
     // 合計の高さを計算
     var totalHeight = headerHeight + bgBeforeHeight;
 
     // プレースホルダーの要素を作成して高さを設定
-    var headerPlaceholder = $('<div class="header-placeholder"></div>').height(headerHeight);
+    var headerPlaceholder = $('<div class="header-placeholder"></div>');
 
-    // ヘッダーが固定されるときにプレースホルダーを挿入
-    $(window).on('scroll', function () {
+    // ヘッダーの初期状態を確認し、スクロール位置によって状態を設定
+    function checkStickyState() {
       if ($(window).scrollTop() > headerHeight) {
         if (!$('.header-placeholder').length) {
           $('header.nav-header-wrapper').after(headerPlaceholder);
@@ -191,6 +261,14 @@ jQuery(function ($) {
         $('.header-placeholder').remove();
         $('header.nav-header-wrapper').removeClass('is-sticky');
       }
+    }
+
+    // 初期状態をチェック
+    checkStickyState();
+
+    // スクロール時にヘッダーの状態を更新
+    $(window).on('scroll', function () {
+      checkStickyState();
     });
 
     // クラス名が "bg-texture-" で始まる section タグを選択
@@ -211,7 +289,6 @@ jQuery(function ($) {
       direction: 'top' // 上方向に固定
     });
   });
-
 
   // OpenWeatherMap API の URL
   const apiKey = '3c2ca98bfc502150b6e40b43d09ef673';

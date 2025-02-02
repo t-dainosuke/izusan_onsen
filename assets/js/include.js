@@ -1,5 +1,6 @@
 'use strict';
 {
+  // 共通headタグ
   document.head.insertAdjacentHTML('afterbegin', `
     <meta name="robots" content="noindex">
 
@@ -30,8 +31,44 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Sawarabi+Mincho&family=Zen+Kaku+Gothic+Antique:wght@500;700&display=swap" rel="stylesheet">
   `);
-
-  document.footer.insertAdjacentHTML('afterbegin', `
-    
-    `);
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+  var footerElement = document.querySelector('footer');
+  if (footerElement) {
+    var currentYear = new Date().getFullYear();
+    footerElement.insertAdjacentHTML('afterbegin', `
+      <div class="top-border-wrapper medium-width-wrapper fb">
+        <div class="footer-left">
+        <a href="/">
+          <img src="/assets/img/common/logo.svg" alt="熱海伊豆山温泉のロゴ" width="184" height="40.34">
+        </a>
+        <address>
+            <p class="footer-author">伊豆山温泉観光協会・<br class="sp">伊豆山温泉旅館組合</p>
+            <p class="footer-place">〒413-0011<br>
+              熱海市田原本町9-1　熱海第一ビル地下1階</p>
+            <p class="footer-phone">TEL：<a href="tel:+81557812631">0557-81-2631</a></p>
+            <p class="footer-email">E-Mail：<a href="mailto:izusan@izusan.com">izusan@izusan.com</a></p>
+          </address>
+        </div>
+        <div class="footer-right">
+          <ul>
+            <li><a href="/"><span>トップページ</span></a></li>
+            <li><a href="#"><span>観光情報</span></a></li>
+            <li><a href="/info/accommodation/"><span>宿泊施設</span></a></li>
+            <li><a href="#"><span>ニュース</span></a></li>
+            <li><a href="#"><span>頑張ってます伊豆山</span></a></li>
+            <li><a href="#"><span>伊豆山の歴史</span></a></li>
+            <li><a href="#"><span>伊豆山温泉について</span></a></li>
+            <li><a href="/access/"><span>アクセス</span></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-copyright medium-width-wrapper">
+        <small>&copy; 2024-${currentYear} Atami Izusan Onsen Kanko Kyokai / Izusan Onsen Ryokan Kumiai</small>
+      </div>
+    `);
+  } else {
+    console.error('Footer element not found.');
+  }
+});
